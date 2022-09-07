@@ -1,0 +1,41 @@
+<div class="form-container">
+  <div class="form-wrapper">
+    <form>
+      <h3>Sign Up</h3>
+      <!-- Name -->
+      <div class="name">
+        <label for="fullname">Full Name</label>
+        <input type="text" placeholder="Full Name" name="fullname" />
+      </div>
+      <!-- Email -->
+      <div class="email">
+        <label for="email">Email</label>
+        <input type="email" placeholder="Email Address" name="email" />
+      </div>
+      <!-- Username -->
+      <div class="username">
+        <label for="username">Username</label>
+        <input type="text" placeholder="Username" name="username" />
+      </div>
+      <!-- Password -->
+      <div class="password">
+        <label for="password">Password</label>
+        <input type="text" placeholder="***********" name="password" />
+      </div>
+      <!-- Confirm Password -->
+      <div class="cpassword">
+        <label for="password">Confirm Password</label>
+        <input type="password" placeholder="***********" name="password" />
+      </div>
+
+      <div class="signin-signup">
+        <!-- Submit -->
+        <div class="signup">
+          <input type="submit" value="Sign Up" />
+        </div>
+        <!-- Sign in -->
+        <a [routerLink]="['/auth/login']">Sign In</a>
+      </div>
+    </form>
+  </div>
+</div>

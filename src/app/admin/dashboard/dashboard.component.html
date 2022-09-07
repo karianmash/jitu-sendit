@@ -1,0 +1,59 @@
+<div class="admin-container">
+  <!-- sidebar -->
+  <div class="sidebar">
+    <!-- items -->
+    <a
+      [routerLink]="['/admin/dashboard']"
+      class="sidebar-item"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <fa-icon [icon]="fadashboard"></fa-icon>
+      Dashboard
+    </a>
+    <!-- items -->
+    <a
+      [routerLink]="['/admin/parcels']"
+      class="sidebar-item"
+      routerLinkActive="active"
+    >
+      <fa-icon [icon]="faparcel"></fa-icon>
+      Parcels
+    </a>
+    <!-- items -->
+    <a
+      [routerLink]="['/admin/create-parcel']"
+      class="sidebar-item"
+      routerLinkActive="active"
+    >
+      <fa-icon [icon]="faparcel"></fa-icon>
+      Create Parcel
+    </a>
+    <!-- items -->
+    <a
+      [routerLink]="['/admin/customers']"
+      class="sidebar-item"
+      routerLinkActive="active"
+    >
+      <fa-icon [icon]="fauser"></fa-icon>
+      Customers
+    </a>
+    <!-- items -->
+    <a
+      [routerLink]="['/admin/deliveries']"
+      class="sidebar-item"
+      routerLinkActive="active"
+    >
+      <fa-icon [icon]="fatrack"></fa-icon>
+      Deliveries
+    </a>
+  </div>
+  <!-- content arer -->
+  <div class="content-area">
+    <div class="content">
+      <!-- admin components here -->
+      <router-outlet></router-outlet>
+    </div>
+    <footer>Copyright @ 2022</footer>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="form-container">
+  <!-- form -->
+  <div class="form-wrapper">
+    <!-- image -->
+    <div class="form-image">
+      <img src="assets/delivery.png" />
+    </div>
+    <!-- form -->
+    <form>
+      <h3>Welcome</h3>
+      <!-- Email -->
+      <div class="email">
+        <label for="email">Email</label>
+        <input type="email" placeholder="Email Address" name="email" />
+      </div>
+      <!-- Password -->
+      <div class="password">
+        <label for="password">Password</label>
+        <input type="text" placeholder="***********" name="password" />
+      </div>
+
+      <div class="signin-signup">
+        <!-- Submit -->
+        <div class="signin">
+          <input type="submit" value="Sign In" />
+        </div>
+        <!-- Sign in -->
+        <a [routerLink]="['/auth/register']">Sign Up</a>
+      </div>
+    </form>
+  </div>
+</div>

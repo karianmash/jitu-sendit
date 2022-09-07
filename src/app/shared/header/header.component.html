@@ -1,0 +1,21 @@
+<div class="container">
+  <header>
+    <!-- Logo -->
+    <a [routerLink]="['/']" class="logo">SENDiT</a>
+    <!-- account details -->
+    <div class="account">
+      <a [routerLink]="['/auth/login']" *ngIf="isLoggedIn === false"
+        ><div>Sign In</div></a
+      >
+      <a [routerLink]="['/auth/register']" *ngIf="isLoggedIn === false"
+        ><div>Sign Up</div></a
+      >
+      <div *ngIf="isLoggedIn === true">Welcome Ian</div>
+      <div *ngIf="isLoggedIn === true">Logout</div>
+    </div>
+  </header>
+  <!-- Components here -->
+  <div class="content-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

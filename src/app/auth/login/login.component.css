@@ -1,0 +1,87 @@
+.form-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.form-container .form-wrapper {
+  width: 70%;
+  height: 90%;
+  margin: auto;
+  display: flex;
+}
+.form-wrapper .form-image {
+  height: 100%;
+  width: 45%;
+  display: flex;
+  justify-content: center;
+}
+.form-wrapper .form-image img {
+  width: 100%;
+  height: auto;
+}
+.form-wrapper form {
+  width: 55%;
+  height: 100%;
+  background-color: #211f27;
+  border-radius: 10px;
+  padding: 0 2rem;
+  color: #ffffff;
+}
+form h3 {
+  text-align: center;
+  font-size: 2.3rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+form div {
+  display: flex;
+  margin-bottom: 2rem;
+  flex-direction: column;
+}
+form div label {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+form div input {
+  height: 2rem;
+  border: none;
+  font-size: 1rem;
+  background-color: transparent;
+  color: #7b7979;
+  border-bottom: 1px solid #000000;
+}
+form div input:focus {
+  outline: none;
+}
+form .signin-signup {
+  display: flex;
+  flex-direction: row;
+  font-weight: 500;
+  font-size: 1.2rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+form div input[type="submit"] {
+  border: none;
+  color: #ffffff;
+  height: initial;
+  border-bottom: 0;
+}
+form .signin-signup .signin,
+form .signin-signup a {
+  background-color: #b56923;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 2.5rem;
+  height: 2.5rem;
+  border-radius: 20px;
+  color: #ffffff;
+  cursor: pointer;
+}
+form .signin-signup div:hover,
+form .signin-signup a:hover {
+  background-color: #924b09;
+}

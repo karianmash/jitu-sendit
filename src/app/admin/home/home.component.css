@@ -1,0 +1,99 @@
+.home-container {
+  height: 100%;
+  width: 100%;
+  padding-top: 2rem;
+}
+.highlights {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 5rem;
+}
+.highlights .highlight-card {
+  background-color: #211f27;
+  height: 100%;
+  width: 22%;
+  border-radius: 6px;
+  display: flex;
+}
+.highlight-card .info {
+  height: 100%;
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* background-color: green; */
+  padding-left: 0.5rem;
+  color: #e8e8e8;
+}
+.highlight-card .info p {
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+.highlight-card .icon {
+  width: 35%;
+  height: 100%;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.highlight-card .sales {
+  color: #0f62a1;
+}
+.highlight-card .deliveries {
+  color: #b56923;
+}
+.highlight-card .orders {
+  color: #b73318;
+}
+.highlight-card .customers {
+  color: #5aab01;
+}
+
+/* More info */
+.more-info {
+  display: flex;
+  margin-top: 3rem;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+}
+.more-info .common {
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: #211f27;
+}
+.more-info .common h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+.more-info .common p {
+  color: #b0afaf;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.more-info .order-info {
+  width: 37%;
+}
+.more-info .user-info {
+  width: 57%;
+}
+.more-info .orders {
+  margin: 2rem 0;
+}
+.more-info .price {
+  margin-bottom: 1rem;
+}
+/* more user info */
+.more-info .user-info .row {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+.more-info .user-info .inactive {
+  margin-right: 1rem;
+}

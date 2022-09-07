@@ -1,0 +1,56 @@
+.container {
+  background-color: #18181c;
+  height: 100vh;
+  width: 100%;
+}
+header {
+  background-color: #000000;
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+}
+.logo {
+  height: 100%;
+  width: auto;
+  color: #b56923;
+  display: flex;
+  align-items: center;
+  font-size: 2.8rem;
+  font-weight: 800;
+}
+.account {
+  display: flex;
+  height: 100%;
+  margin: auto 0;
+  width: auto;
+}
+.account a,
+.account div {
+  margin-right: 1rem;
+  height: 60%;
+  border-radius: 20px;
+  margin: auto 1rem auto 0;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  background-color: #23242e;
+  color: #ffffff;
+  width: auto;
+  padding: 0 15px;
+  cursor: pointer;
+}
+.account a:hover,
+.account div:last-child:hover {
+  background-color: #b56923;
+}
+.account div:last-child {
+  margin-right: 0;
+}
+.content-container {
+  height: 90vh;
+  width: 100%;
+}
