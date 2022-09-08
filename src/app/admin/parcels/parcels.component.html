@@ -1,1 +1,42 @@
-<p>parcels works!</p>
+<div class="parcels-container" *ngIf="parcels.length > 0">
+  <!-- info-bar -->
+  <div class="info-bar">{{ noParcels }} Parcels Found</div>
+  <!-- search -->
+  <div class="search-container">
+    <input type="text" placeholder="Search" name="parcel" />
+    <button>Search</button>
+  </div>
+
+  <!-- Parcels table -->
+  <table>
+    <!-- table header -->
+    <thead>
+      <tr>
+        <th>Tracking id</th>
+        <th>Shipper</th>
+        <th>Status</th>
+        <th>Created at</th>
+        <th>Price ($)</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <!-- table body -->
+    <tbody *ngFor="let parcel of parcels; let i = index">
+      <tr id="{{ i }}">
+        <td>{{ parcel.trackId }}</td>
+        <td>{{ parcel.shipper }}</td>
+        <td>{{ parcel.status }}</td>
+        <td>{{ parcel.createdAt }}</td>
+        <td>{{ parcel.price }}</td>
+        <td class="action">
+          <!-- edit btn -->
+          <a href="#"><fa-icon [icon]="faedit"></fa-icon></a>
+          <!-- mark complete -->
+          <a href="#"><fa-icon [icon]="facheck"></fa-icon></a>
+          <!-- trash -->
+          <a href="#"><fa-icon [icon]="fatrash"></fa-icon></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

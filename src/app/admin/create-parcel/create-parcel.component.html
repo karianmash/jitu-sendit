@@ -1,0 +1,78 @@
+<div class="parcel-container">
+  <!-- info-bar -->
+  <div class="info-bar">
+    <fa-icon [icon]="faadd"></fa-icon>
+    Add Parcel
+  </div>
+  <!-- Add parcel -->
+  <form class="parcel-form">
+    <!-- first row -->
+    <div class="row1">
+      <!-- tracking number -->
+      <div>
+        <label>Tracking Number</label>
+        <input type="text" name="tracking-number" />
+      </div>
+      <!-- date -->
+      <div>
+        <label>Date from</label>
+        <input type="date" name="date" />
+      </div>
+      <!-- tracking number -->
+      <div>
+        <label>Sender</label>
+        <input type="text" name="sender" />
+      </div>
+    </div>
+
+    <!-- secord row -->
+    <div class="row2">
+      <!-- tracking number -->
+      <div>
+        <label>Receiver</label>
+        <input type="text" name="receiver" />
+      </div>
+      <!-- date -->
+      <div>
+        <label>Status</label>
+        <select name="status" id="status">
+          <option value="In progress">In Progress</option>
+          <option value="Completed">Completed</option>
+          <option value="Canceled">Canceled</option>
+        </select>
+      </div>
+      <!-- tracking number -->
+      <div>
+        <label>Location</label>
+        <select name="location" id="location">
+          <option value="nairobi">Nairobi</option>
+          <option value="kirinyaga">Kirinyaga</option>
+          <option value="nyeri">Nyeri</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- map/submit -->
+    <div class="row3">
+      <!-- map -->
+      <div class="map">
+        <iframe
+          width="600"
+          height="500"
+          id="gmap_canvas"
+          src="https://maps.google.com/maps?q=the%20jitu&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+        ></iframe>
+      </div>
+      <!-- submit -->
+      <div>
+        <input type="submit" value="Submit" />
+      </div>
+    </div>
+  </form>
+
+  <!-- map -->
+</div>

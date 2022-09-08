@@ -54,7 +54,6 @@ thead tr,
 tbody tr {
   height: 2.5rem;
   margin-top: 2rem;
-  /* border: 1px solid; */
 }
 tbody tr:nth-child(o) {
   background-color: #cc4f4f;
@@ -74,15 +73,6 @@ tbody tr .action {
 tbody tr .action a {
   margin-right: 1.5rem;
   font-size: 1.2rem;
-}
-tbody tr .action a:first-child {
-  color: #1d81bb;
-}
-tbody tr .action a:nth-child(2) {
-  color: #2a9e19;
-}
-tbody tr .action a:last-child {
-  margin-right: 0;
   color: #e73737;
 }
 tbody tr .action a:hover {

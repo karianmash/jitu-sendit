@@ -4,11 +4,9 @@
     <a [routerLink]="['/']" class="logo">SENDiT</a>
     <!-- account details -->
     <div class="account">
-      <a [routerLink]="['/auth/login']" *ngIf="isLoggedIn === false"
-        ><div>Sign In</div></a
-      >
+      <a [routerLink]="['/auth/login']" *ngIf="isLoggedIn === false">Sign In</a>
       <a [routerLink]="['/auth/register']" *ngIf="isLoggedIn === false"
-        ><div>Sign Up</div></a
+        >Sign Up</a
       >
       <div *ngIf="isLoggedIn === true">Welcome Ian</div>
       <div *ngIf="isLoggedIn === true">Logout</div>
