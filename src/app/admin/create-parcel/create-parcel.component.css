@@ -1,0 +1,101 @@
+.parcel-container {
+  width: 100%;
+  height: auto;
+  padding: 1.5rem 0 1rem;
+  color: #bdbdbd;
+}
+.parcel-container .info-bar {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #211f27;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+/* form inputs */
+.parcel-form {
+  width: 100%;
+  height: auto;
+  margin-top: 1rem;
+}
+.parcel-form .row1,
+.parcel-form .row2 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+}
+.parcel-form .row2 {
+  margin-top: 1.5rem;
+}
+.row1 div,
+.row2 div {
+  background-color: #211f27;
+  border-radius: 6px;
+  padding: 0.7rem;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.row1 div label,
+.row2 div label {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.row1 div input,
+.row2 div input,
+.row2 div select {
+  height: 2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+  color: #dbd5d5;
+  background-color: #1d1d1d;
+  border: 1px solid #f1f1f1;
+}
+.row1 div input:focus,
+.row2 div input:focus,
+.row2 div select:focus {
+  outline: none;
+}
+/* Third row */
+.row3 {
+  display: flex;
+  width: 100%;
+  height: 14rem;
+  margin-top: 1.5rem;
+  justify-content: space-between;
+}
+.row3 .map {
+  width: 60%;
+  height: 100%;
+}
+.row3 .map iframe {
+  width: 100%;
+  height: 100%;
+}
+.row3 div:last-child {
+  width: 17%;
+  height: 3rem;
+  background-color: #211f27;
+  text-align: center;
+  align-self: flex-end;
+  border-radius: 10px;
+}
+.row3 div:last-child:hover {
+  background-color: #3a3744;
+}
+.row3 div:last-child input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.3rem;
+  color: #f1f1f1;
+  cursor: pointer;
+  background-color: transparent;
+}

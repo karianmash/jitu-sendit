@@ -3,7 +3,7 @@
   <div class="sidebar">
     <!-- items -->
     <a
-      [routerLink]="['/admin/dashboard']"
+      [routerLink]="['/user/dashboard']"
       class="sidebar-item"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
@@ -13,39 +13,30 @@
     </a>
     <!-- items -->
     <a
-      [routerLink]="['/admin/parcels']"
+      [routerLink]="['/user/sent-parcels']"
       class="sidebar-item"
       routerLinkActive="active"
     >
-      <fa-icon [icon]="faparcel"></fa-icon>
-      Parcels
+      <fa-icon [icon]="fapaperplane"></fa-icon>
+      Sent
     </a>
     <!-- items -->
     <a
-      [routerLink]="['/admin/create-parcel']"
+      [routerLink]="['/user/received-parcels']"
       class="sidebar-item"
       routerLinkActive="active"
     >
-      <fa-icon [icon]="faparcel"></fa-icon>
-      Create Parcel
+      <fa-icon [icon]="fabox"></fa-icon>
+      Received
     </a>
     <!-- items -->
     <a
-      [routerLink]="['/admin/customers']"
+      [routerLink]="['/user/canceled-parcels']"
       class="sidebar-item"
       routerLinkActive="active"
     >
-      <fa-icon [icon]="fauser"></fa-icon>
-      Customers
-    </a>
-    <!-- items -->
-    <a
-      [routerLink]="['/admin/deliveries']"
-      class="sidebar-item"
-      routerLinkActive="active"
-    >
-      <fa-icon [icon]="fatrack"></fa-icon>
-      Deliveries
+      <fa-icon [icon]="fatrash"></fa-icon>
+      Canceled
     </a>
   </div>
 

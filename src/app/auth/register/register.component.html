@@ -1,31 +1,43 @@
 <div class="form-container">
   <div class="form-wrapper">
-    <form>
+    <form [formGroup]="reactiveRegisterForm" (ngSubmit)="onSubmit()">
       <h3>Sign Up</h3>
       <!-- Name -->
       <div class="name">
         <label for="fullname">Full Name</label>
-        <input type="text" placeholder="Full Name" name="fullname" />
+        <input type="text" placeholder="Full Name" formControlName="fullname" />
       </div>
       <!-- Email -->
       <div class="email">
         <label for="email">Email</label>
-        <input type="email" placeholder="Email Address" name="email" />
+        <input
+          type="email"
+          placeholder="Email Address"
+          formControlName="email"
+        />
       </div>
       <!-- Username -->
       <div class="username">
         <label for="username">Username</label>
-        <input type="text" placeholder="Username" name="username" />
+        <input type="text" placeholder="Username" formControlName="username" />
       </div>
       <!-- Password -->
       <div class="password">
         <label for="password">Password</label>
-        <input type="text" placeholder="***********" name="password" />
+        <input
+          type="password"
+          placeholder="***********"
+          formControlName="password"
+        />
       </div>
       <!-- Confirm Password -->
       <div class="cpassword">
         <label for="password">Confirm Password</label>
-        <input type="password" placeholder="***********" name="password" />
+        <input
+          type="password"
+          placeholder="***********"
+          formControlName="confirmpassword"
+        />
       </div>
 
       <div class="signin-signup">
@@ -34,7 +46,7 @@
           <input type="submit" value="Sign Up" />
         </div>
         <!-- Sign in -->
-        <a [routerLink]="['/auth/login']">Sign In</a>
+        <a routerLink="/auth/login">Sign In</a>
       </div>
     </form>
   </div>
