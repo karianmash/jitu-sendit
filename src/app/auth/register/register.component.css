@@ -39,7 +39,7 @@ form div input {
   border: none;
   font-size: 1rem;
   background-color: transparent;
-  color: #7b7979;
+  /* color: #7b7979; */
   border-bottom: 1px solid #000000;
 }
 form div input:focus {
