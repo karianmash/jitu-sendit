@@ -9,6 +9,7 @@ import { Parcel } from 'src/app/interface/parcel';
   styleUrls: ['./create-parcel.component.css'],
 })
 export class CreateParcelComponent implements OnInit {
+  // Icons
   faadd = faPlus;
 
   reactiveParcelForm: FormGroup;
@@ -31,7 +32,6 @@ export class CreateParcelComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.reactiveParcelForm);
     let parcel = {
       trackId: (Math.random() * 100000).toString(),
       item: this.reactiveParcelForm.value.item,
