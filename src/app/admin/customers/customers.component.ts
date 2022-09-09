@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { User } from 'src/app/interface/user';
+import { UserParcel } from 'src/app/interface/user';
 
 @Component({
   selector: 'app-customers',
@@ -12,7 +12,7 @@ export class CustomersComponent implements OnInit {
 
   noUsers: number;
 
-  users: User[] = [
+  users: UserParcel[] = [
     {
       username: 'Ian Macharia',
       email: 'ian@gmail.com',

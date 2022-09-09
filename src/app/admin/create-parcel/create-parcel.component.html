@@ -5,55 +5,100 @@
     Add Parcel
   </div>
   <!-- Add parcel -->
-  <form class="parcel-form">
+  <form
+    class="parcel-form"
+    [formGroup]="reactiveParcelForm"
+    (ngSubmit)="onSubmit()"
+  >
     <!-- first row -->
     <div class="row1">
-      <!-- tracking number -->
+      <!-- item -->
       <div>
-        <label>Tracking Number</label>
-        <input type="text" name="tracking-number" />
+        <label>Item</label>
+        <input type="text" formControlName="item" />
+        <span *ngIf="parcel?.item === 'invalid'">* Item name is required</span>
       </div>
+
       <!-- date -->
       <div>
         <label>Date from</label>
-        <input type="date" name="date" />
+        <input type="date" formControlName="date" />
+        <span *ngIf="parcel?.createdAt === 'invalid'">* Date is required</span>
       </div>
-      <!-- tracking number -->
+
+      <!-- sender -->
       <div>
         <label>Sender</label>
-        <input type="text" name="sender" />
+        <input type="text" formControlName="sender" />
+        <span *ngIf="parcel?.sender === 'invalid'"
+          >* Sender name is required</span
+        >
       </div>
     </div>
 
     <!-- secord row -->
     <div class="row2">
-      <!-- tracking number -->
+      <!-- receiver -->
       <div>
         <label>Receiver</label>
-        <input type="text" name="receiver" />
+        <input type="text" formControlName="receiver" />
+        <span *ngIf="parcel?.receiver === 'invalid'"
+          >* Receiver name is required</span
+        >
       </div>
-      <!-- date -->
+
+      <!-- status -->
       <div>
         <label>Status</label>
-        <select name="status" id="status">
+        <select formControlName="status" id="status">
           <option value="In progress">In Progress</option>
           <option value="Completed">Completed</option>
           <option value="Canceled">Canceled</option>
         </select>
+        <span *ngIf="parcel?.status === 'invalid'"
+          >* Parcel status is required</span
+        >
       </div>
-      <!-- tracking number -->
+
+      <!-- shipper -->
+      <div>
+        <label>Shipper</label>
+        <select formControlName="shipper" id="status">
+          <option value="Mash Movers">Mash Movers</option>
+          <option value="Amazon Air">Amazon Air</option>
+          <option value="UPS Courier">UPS Courier</option>
+        </select>
+        <span *ngIf="parcel?.shipper === 'invalid'"
+          >* Shipper name is required</span
+        >
+      </div>
+    </div>
+
+    <!-- secord row -->
+    <div class="row2">
+      <!-- price -->
+      <div>
+        <label>Price</label>
+        <input type="text" formControlName="receiver" />
+        <span *ngIf="parcel?.price === 'invalid'">* Price is required</span>
+      </div>
+
+      <!-- location -->
       <div>
         <label>Location</label>
-        <select name="location" id="location">
-          <option value="nairobi">Nairobi</option>
+        <select formControlName="location" id="location">
+          <option value="Nairobi">Nairobi</option>
           <option value="kirinyaga">Kirinyaga</option>
-          <option value="nyeri">Nyeri</option>
+          <option value="Nyeri">Nyeri</option>
         </select>
+        <span *ngIf="parcel?.location === 'invalid'"
+          >* Location is required</span
+        >
       </div>
     </div>
 
     <!-- map/submit -->
-    <div class="row3">
+    <div class="row4">
       <!-- map -->
       <div class="map">
         <iframe
@@ -73,6 +118,4 @@
       </div>
     </div>
   </form>
-
-  <!-- map -->
 </div>

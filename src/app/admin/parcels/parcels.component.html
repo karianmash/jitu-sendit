@@ -14,8 +14,10 @@
       <tr>
         <th>Tracking id</th>
         <th>Shipper</th>
+        <th>Item</th>
         <th>Status</th>
         <th>Created at</th>
+        <th>Location</th>
         <th>Price ($)</th>
         <th>Action</th>
       </tr>
@@ -25,8 +27,10 @@
       <tr id="{{ i }}">
         <td>{{ parcel.trackId }}</td>
         <td>{{ parcel.shipper }}</td>
+        <td>{{ parcel.item }}</td>
         <td>{{ parcel.status }}</td>
         <td>{{ parcel.createdAt }}</td>
+        <td>{{ parcel.location }}</td>
         <td>{{ parcel.price }}</td>
         <td class="action">
           <!-- edit btn -->

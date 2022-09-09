@@ -6,6 +6,7 @@
       <div class="name">
         <label for="fullname">Full Name</label>
         <input type="text" placeholder="Full Name" formControlName="fullname" />
+        <span *ngIf="user?.fullname === 'invalid'">* Name is required</span>
       </div>
       <!-- Email -->
       <div class="email">
@@ -15,11 +16,20 @@
           placeholder="Email Address"
           formControlName="email"
         />
+        <span
+          *ngIf="
+            user?.email === 'invalid' ||
+            (!reactiveRegisterForm.get('email').valid &&
+              reactiveRegisterForm.get('email').dirty)
+          "
+          >* Email is invalid</span
+        >
       </div>
       <!-- Username -->
       <div class="username">
         <label for="username">Username</label>
         <input type="text" placeholder="Username" formControlName="username" />
+        <span *ngIf="user?.username === 'invalid'">* Userame is required</span>
       </div>
       <!-- Password -->
       <div class="password">
@@ -29,6 +39,7 @@
           placeholder="***********"
           formControlName="password"
         />
+        <span *ngIf="user?.password === 'invalid'">* Password is required</span>
       </div>
       <!-- Confirm Password -->
       <div class="cpassword">
@@ -38,6 +49,10 @@
           placeholder="***********"
           formControlName="confirmpassword"
         />
+        <span *ngIf="user?.confirmPassword === 'invalid'"
+          >* Confirm passwords is required</span
+        >
+        <span *ngIf="dontMatch">* Passwords don't match</span>
       </div>
 
       <div class="signin-signup">

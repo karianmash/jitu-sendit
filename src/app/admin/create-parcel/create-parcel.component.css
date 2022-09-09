@@ -57,28 +57,33 @@
   background-color: #1d1d1d;
   border: 1px solid #f1f1f1;
 }
+span {
+  color: red;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+}
 .row1 div input:focus,
 .row2 div input:focus,
 .row2 div select:focus {
   outline: none;
 }
 /* Third row */
-.row3 {
+.row4 {
   display: flex;
   width: 100%;
   height: 14rem;
   margin-top: 1.5rem;
   justify-content: space-between;
 }
-.row3 .map {
+.row4 .map {
   width: 60%;
   height: 100%;
 }
-.row3 .map iframe {
+.row4 .map iframe {
   width: 100%;
   height: 100%;
 }
-.row3 div:last-child {
+.row4 div:last-child {
   width: 17%;
   height: 3rem;
   background-color: #211f27;
@@ -86,10 +91,10 @@
   align-self: flex-end;
   border-radius: 10px;
 }
-.row3 div:last-child:hover {
+.row4 div:last-child:hover {
   background-color: #3a3744;
 }
-.row3 div:last-child input {
+.row4 div:last-child input {
   height: 100%;
   width: 100%;
   border: none;

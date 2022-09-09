@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -11,10 +11,15 @@ import { CreateParcelComponent } from './create-parcel/create-parcel.component';
 import { CustomersComponent } from './customers/customers.component';
 import { DeliveriesComponent } from './deliveries/deliveries.component';
 
+import { AuthGuard } from '../auth/service/auth.guard';
+import { CanDeactivateGuard } from '../auth/service/can-deactivate.guard';
+import { ParcelsService } from './services/parcels.service';
+
 const adminRoutes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: 'dashboard',
@@ -49,10 +54,12 @@ const adminRoutes: Routes = [
     CustomersComponent,
     DeliveriesComponent,
   ],
+  providers: [CanDeactivateGuard, ParcelsService],
   imports: [
     CommonModule,
     SharedModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(adminRoutes),
   ],
   exports: [RouterModule],

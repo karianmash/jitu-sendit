@@ -4,10 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared.module';
+import { AuthGuard } from '../auth/service/auth.guard';
 
 const userRoutes: Routes = [
   {
     path: '',
+    canActivateChild: [AuthGuard],
     component: DashboardComponent,
     // children: [
     //   {
