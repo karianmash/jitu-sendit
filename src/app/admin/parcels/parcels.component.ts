@@ -5,6 +5,7 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { Parcel } from 'src/app/interface/parcel';
+import { ParcelsService } from '../services/parcels.service';
 
 @Component({
   selector: 'app-parcels',
@@ -12,109 +13,20 @@ import { Parcel } from 'src/app/interface/parcel';
   styleUrls: ['./parcels.component.css'],
 })
 export class ParcelsComponent implements OnInit {
+  // icons
   faedit = faPenToSquare;
   facheck = faCheck;
   fatrash = faTrash;
 
   noParcels: number;
+  parcels: Parcel[] = [];
 
-  parcels: Parcel[] = [
-    {
-      trackId: '48541693865169',
-      shipper: 'Mash mover',
-      status: 'In Progress',
-      createdAt: '2022.01.03 20:06.256',
-      price: '203',
-    },
-    {
-      trackId: '30542193823695',
-      shipper: 'UPS',
-      status: 'Completed',
-      createdAt: '2019.08.04 20:06.256',
-      price: '5,010',
-    },
-    {
-      trackId: '01854103865127',
-      shipper: 'Amazon Air',
-      status: 'In Progress',
-      createdAt: '2005.09.12 20:06.256',
-      price: '300',
-    },
-    {
-      trackId: '01854103865127',
-      shipper: 'Amazon Air',
-      status: 'In Progress',
-      createdAt: '2005.09.12 20:06.256',
-      price: '300',
-    },
-    {
-      trackId: '30542193823695',
-      shipper: 'UPS',
-      status: 'Completed',
-      createdAt: '2019.08.04 20:06.256',
-      price: '5,010',
-    },
-    {
-      trackId: '01854103865127',
-      shipper: 'Amazon Air',
-      status: 'In Progress',
-      createdAt: '2005.09.12 20:06.256',
-      price: '300',
-    },
-    {
-      trackId: '01854103865127',
-      shipper: 'Amazon Air',
-      status: 'In Progress',
-      createdAt: '2005.09.12 20:06.256',
-      price: '300',
-    },
-    {
-      trackId: '30542193823695',
-      shipper: 'UPS',
-      status: 'Completed',
-      createdAt: '2019.08.04 20:06.256',
-      price: '5,010',
-    },
-    {
-      trackId: '01854103865127',
-      shipper: 'Amazon Air',
-      status: 'In Progress',
-      createdAt: '2005.09.12 20:06.256',
-      price: '300',
-    },
-    {
-      trackId: '01854103865127',
-      shipper: 'Amazon Air',
-      status: 'In Progress',
-      createdAt: '2005.09.12 20:06.256',
-      price: '300',
-    },
-    {
-      trackId: '30542193823695',
-      shipper: 'UPS',
-      status: 'Completed',
-      createdAt: '2019.08.04 20:06.256',
-      price: '5,010',
-    },
-    {
-      trackId: '01854103865127',
-      shipper: 'Amazon Air',
-      status: 'In Progress',
-      createdAt: '2005.09.12 20:06.256',
-      price: '300',
-    },
-    {
-      trackId: '01854103865127',
-      shipper: 'Amazon Air',
-      status: 'In Progress',
-      createdAt: '2005.09.12 20:06.256',
-      price: '300',
-    },
-  ];
-
-  constructor() {}
+  constructor(private parcelsService: ParcelsService) {}
 
   ngOnInit(): void {
+    // get parcels
+    this.parcels = this.parcelsService.getParcels;
+
     if (this.parcels.length > 0) {
       this.noParcels = this.parcels.length;
     }

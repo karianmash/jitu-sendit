@@ -11,10 +11,15 @@ import { CreateParcelComponent } from './create-parcel/create-parcel.component';
 import { CustomersComponent } from './customers/customers.component';
 import { DeliveriesComponent } from './deliveries/deliveries.component';
 
+import { AuthGuard } from '../auth/service/auth.guard';
+import { CanDeactivateGuard } from '../auth/service/can-deactivate.guard';
+import { ParcelsService } from './services/parcels.service';
+
 const adminRoutes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: 'dashboard',
@@ -49,6 +54,7 @@ const adminRoutes: Routes = [
     CustomersComponent,
     DeliveriesComponent,
   ],
+  providers: [CanDeactivateGuard, ParcelsService],
   imports: [
     CommonModule,
     SharedModule,

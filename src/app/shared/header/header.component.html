@@ -8,8 +8,8 @@
       <a [routerLink]="['/auth/register']" *ngIf="isLoggedIn === false"
         >Sign Up</a
       >
-      <div *ngIf="isLoggedIn === true">Welcome Ian</div>
-      <div *ngIf="isLoggedIn === true">Logout</div>
+      <div *ngIf="isLoggedIn === true">Welcome {{ userName | firstName }}</div>
+      <div *ngIf="isLoggedIn === true" (click)="logout()">Logout</div>
     </div>
   </header>
   <!-- Components here -->

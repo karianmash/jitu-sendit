@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { HeaderComponent } from './header/header.component';
+import { FirstNamePipe } from '../pipes/first-name.pipe';
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, FirstNamePipe],
   imports: [CommonModule, RouterModule],
-  exports: [HeaderComponent, FontAwesomeModule],
+  exports: [HeaderComponent, FontAwesomeModule, FirstNamePipe],
 })
 export class SharedModule {}

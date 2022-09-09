@@ -7,6 +7,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
+import { AuthService } from './service/auth.service';
+import { AuthGuard } from './service/auth.guard';
+import { CanDeactivateGuard } from './service/can-deactivate.guard';
+
 const authRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
@@ -20,6 +24,7 @@ const authRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(authRoutes),
   ],
+  providers: [AuthService, AuthGuard, CanDeactivateGuard],
   exports: [RouterModule],
 })
 export class AuthModule {}

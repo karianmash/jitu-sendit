@@ -6,17 +6,40 @@
       <img src="assets/delivery.png" />
     </div>
     <!-- form -->
-    <form>
+    <form (ngSubmit)="onFormSubmit()" #form="ngForm">
       <h3>Welcome</h3>
+      <span
+        style="margin-top: 0.6rem; color: red"
+        *ngIf="invalidCreadentials === true"
+        >Invalid Credential!!!</span
+      >
       <!-- Email -->
       <div class="email">
         <label for="email">Email</label>
-        <input type="email" placeholder="Email Address" name="email" />
+        <input
+          type="email"
+          placeholder="Email Address"
+          name="email"
+          ngModel
+          required
+          email
+          #email="ngModel"
+        />
+        <span *ngIf="noEmail === true || (!email.valid && email.touched)"
+          >* Email is invalid</span
+        >
       </div>
       <!-- Password -->
       <div class="password">
         <label for="password">Password</label>
-        <input type="text" placeholder="***********" name="password" />
+        <input
+          type="password"
+          placeholder="***********"
+          name="password"
+          ngModel
+          required
+        />
+        <span *ngIf="noPassword === true">* Password is required</span>
       </div>
 
       <div class="signin-signup">
