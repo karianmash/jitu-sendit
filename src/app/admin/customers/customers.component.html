@@ -1,10 +1,10 @@
-<div class="parcels-container" *ngIf="users.length > 0">
+<div class="parcels-container" *ngIf="customers.length > 0">
   <!-- info-bar -->
-  <div class="info-bar">{{ noUsers }} Total Customers</div>
+  <div class="info-bar">{{ numberOfCustomers }} Total Customers</div>
   <!-- search -->
   <div class="search-container">
-    <input type="text" placeholder="Search" name="parcel" />
-    <button>Search</button>
+    <input type="text" placeholder="Search" [(ngModel)]="customerName" />
+    <button (click)="searchParcel()">Search</button>
   </div>
 
   <!-- Parcels table -->
@@ -21,7 +21,7 @@
       </tr>
     </thead>
     <!-- table body -->
-    <tbody *ngFor="let user of users; let i = index">
+    <tbody *ngFor="let user of customers; let i = index">
       <tr id="{{ i }}">
         <td>{{ user.username }}</td>
         <td>{{ user.email }}</td>
