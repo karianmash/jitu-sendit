@@ -45,8 +45,8 @@ export class ParcelsComponent implements OnInit {
   }
 
   // parcel details
-  showDetails(i: string) {
-    this.router.navigate(['/admin/parcel-details/' + i]);
+  showDetails(parcelId: string) {
+    this.router.navigate(['/admin/parcel-details/' + parcelId]);
   }
 
   // search parcel
@@ -59,5 +59,11 @@ export class ParcelsComponent implements OnInit {
     this.parcels = this.parcelsService.filterParcels(
       this.reactiveFilterForm.value.parcelStatus
     );
+  }
+
+  // delete parcel
+  deleteParcel(parcelId: string) {
+    // this.parcels = this.parcelsService.deleteParcel(parcelId);
+    console.log(this.parcelsService.deleteParcel(parcelId));
   }
 }
