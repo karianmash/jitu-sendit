@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Parcel } from 'src/app/interface/parcel';
+import { ParcelsService } from '../services/parcels.service';
 
 @Component({
   selector: 'app-create-parcel',
@@ -12,11 +14,13 @@ export class CreateParcelComponent implements OnInit {
   // Icons
   faadd = faPlus;
 
+  // Form object
   reactiveParcelForm: FormGroup;
 
+  // Parcels
   parcel: Parcel;
 
-  constructor() {}
+  constructor(private parcelsService: ParcelsService, private router: Router) {}
 
   ngOnInit(): void {
     this.reactiveParcelForm = new FormGroup({
@@ -31,9 +35,10 @@ export class CreateParcelComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  // Handle form submission
+  onSubmit(): void {
     let parcel = {
-      trackId: (Math.random() * 100000).toString(),
+      trackId: Math.trunc(Math.random() * 10000000000).toString(),
       item: this.reactiveParcelForm.value.item,
       createdAt: this.reactiveParcelForm.value.date,
       sender: this.reactiveParcelForm.value.sender,
@@ -51,6 +56,17 @@ export class CreateParcelComponent implements OnInit {
     }
 
     this.parcel = parcel;
-    console.log(this.reactiveParcelForm);
+
+    if (this.reactiveParcelForm.valid === true) {
+      console.log(this.parcel);
+
+      this.registerParcel(this.parcel);
+    }
+  }
+
+  // Register parcel
+  registerParcel(parcel: Parcel) {
+    this.parcelsService.registerParcel(parcel);
+    this.router.navigate(['/admin/parcels']);
   }
 }

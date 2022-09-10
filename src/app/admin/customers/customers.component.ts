@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { UserParcel } from 'src/app/interface/user';
+import { CustomersService } from '../services/customers.service';
 
 @Component({
   selector: 'app-customers',
@@ -8,60 +9,25 @@ import { UserParcel } from 'src/app/interface/user';
   styleUrls: ['./customers.component.css'],
 })
 export class CustomersComponent implements OnInit {
+  // icons
   fatrash = faTrash;
 
-  noUsers: number;
+  numberOfCustomers: number;
+  customerName: string = '';
+  customers: UserParcel[] = [];
 
-  users: UserParcel[] = [
-    {
-      username: 'Ian Macharia',
-      email: 'ian@gmail.com',
-      parcelsSent: 20,
-      parcelsReceived: 32,
-      totalAmount: 20030,
-    },
-    {
-      username: 'Christine Karimi',
-      email: 'christine@gmail.com',
-      parcelsSent: 3,
-      parcelsReceived: 51,
-      totalAmount: 31000,
-    },
-    {
-      username: 'Ian Macharia',
-      email: 'ian@gmail.com',
-      parcelsSent: 20,
-      parcelsReceived: 32,
-      totalAmount: 20030,
-    },
-    {
-      username: 'Ian Macharia',
-      email: 'ian@gmail.com',
-      parcelsSent: 20,
-      parcelsReceived: 32,
-      totalAmount: 20030,
-    },
-    {
-      username: 'Christine Karimi',
-      email: 'christine@gmail.com',
-      parcelsSent: 3,
-      parcelsReceived: 51,
-      totalAmount: 31000,
-    },
-    {
-      username: 'Ian Macharia',
-      email: 'ian@gmail.com',
-      parcelsSent: 20,
-      parcelsReceived: 32,
-      totalAmount: 20030,
-    },
-  ];
-
-  constructor() {}
+  constructor(private customersService: CustomersService) {}
 
   ngOnInit(): void {
-    if (this.users.length > 0) {
-      this.noUsers = this.users.length;
+    this.customers = this.customersService.getCustomers;
+
+    if (this.customers.length > 0) {
+      this.numberOfCustomers = this.customers.length;
     }
+  }
+
+  // search parcel
+  searchParcel() {
+    this.customers = this.customersService.searchParcel(this.customerName);
   }
 }

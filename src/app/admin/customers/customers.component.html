@@ -1,10 +1,11 @@
-<div class="parcels-container" *ngIf="users.length > 0">
+<div class="parcels-container" *ngIf="customers.length > 0; else fallback">
   <!-- info-bar -->
-  <div class="info-bar">{{ noUsers }} Total Customers</div>
+  <div class="info-bar">{{ numberOfCustomers }} Total Customers</div>
+
   <!-- search -->
   <div class="search-container">
-    <input type="text" placeholder="Search" name="parcel" />
-    <button>Search</button>
+    <input type="text" placeholder="Search" [(ngModel)]="customerName" />
+    <button (click)="searchParcel()">Search</button>
   </div>
 
   <!-- Parcels table -->
@@ -17,22 +18,21 @@
         <th>Parcels Sent</th>
         <th>Parcel Received</th>
         <th>Total Amount($)</th>
-        <th>Action</th>
       </tr>
     </thead>
     <!-- table body -->
-    <tbody *ngFor="let user of users; let i = index">
+    <tbody *ngFor="let user of customers; let i = index">
       <tr id="{{ i }}">
         <td>{{ user.username }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.parcelsSent }}</td>
         <td>{{ user.parcelsReceived }}</td>
         <td>{{ user.totalAmount }}</td>
-        <td class="action">
-          <!-- trash -->
-          <a href="#"><fa-icon [icon]="fatrash"></fa-icon></a>
-        </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+<ng-template #fallback>
+  <app-no-content></app-no-content>
+</ng-template>

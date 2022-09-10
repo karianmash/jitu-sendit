@@ -1,15 +1,29 @@
-<div class="parcels-container" *ngIf="parcels.length > 0">
+<div class="parcels-container" *ngIf="parcels.length > 0; else fallback">
   <!-- info-bar -->
-  <div class="info-bar">{{ noParcels }} Parcels Found</div>
-  <!-- search -->
-  <div class="search-container">
-    <input type="text" placeholder="Search" name="parcel" />
-    <button>Search</button>
+  <div class="info-bar">{{ numberOfParcels }} Parcels Found</div>
+
+  <!-- Search feature -->
+  <div class="search-wrapper">
+    <!-- search -->
+    <div class="search-container">
+      <input type="text" placeholder="Search" [(ngModel)]="searchItem" />
+      <button (click)="searchParcel()">Search</button>
+    </div>
+
+    <!-- filter status -->
+    <form [formGroup]="reactiveFilterForm" (ngSubmit)="filterParcels()">
+      <select name="status" id="location" formControlName="parcelStatus">
+        <option value="All">All</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+        <option value="Canceled">Canceled</option>
+      </select>
+      <button type="submit">Filter</button>
+    </form>
   </div>
 
-  <!-- Parcels table -->
+  <!-- Table to display parcels -->
   <table>
-    <!-- table header -->
     <thead>
       <tr>
         <th>Tracking id</th>
@@ -22,10 +36,12 @@
         <th>Action</th>
       </tr>
     </thead>
-    <!-- table body -->
-    <tbody *ngFor="let parcel of parcels; let i = index">
-      <tr id="{{ i }}">
-        <td>{{ parcel.trackId }}</td>
+    <tbody>
+      <tr *ngFor="let parcel of parcels">
+        <td (click)="showDetails(parcel.trackId)">
+          <fa-icon [icon]="falink"></fa-icon>
+          {{ parcel.trackId }}
+        </td>
         <td>{{ parcel.shipper }}</td>
         <td>{{ parcel.item }}</td>
         <td>{{ parcel.status }}</td>
@@ -33,14 +49,16 @@
         <td>{{ parcel.location }}</td>
         <td>{{ parcel.price }}</td>
         <td class="action">
-          <!-- edit btn -->
-          <a href="#"><fa-icon [icon]="faedit"></fa-icon></a>
-          <!-- mark complete -->
-          <a href="#"><fa-icon [icon]="facheck"></fa-icon></a>
-          <!-- trash -->
-          <a href="#"><fa-icon [icon]="fatrash"></fa-icon></a>
+          <fa-icon
+            [icon]="fatrash"
+            (click)="deleteParcel(parcel.trackId)"
+          ></fa-icon>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+<ng-template #fallback>
+  <app-no-content></app-no-content>
+</ng-template>

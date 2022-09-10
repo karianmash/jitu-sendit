@@ -9,11 +9,12 @@ import { HomeComponent } from './home/home.component';
 import { ParcelsComponent } from './parcels/parcels.component';
 import { CreateParcelComponent } from './create-parcel/create-parcel.component';
 import { CustomersComponent } from './customers/customers.component';
-import { DeliveriesComponent } from './deliveries/deliveries.component';
 
 import { AuthGuard } from '../auth/service/auth.guard';
 import { CanDeactivateGuard } from '../auth/service/can-deactivate.guard';
 import { ParcelsService } from './services/parcels.service';
+import { ParcelDetailsComponent } from './parcel-details/parcel-details.component';
+import { CustomersService } from './services/customers.service';
 
 const adminRoutes: Routes = [
   {
@@ -38,8 +39,8 @@ const adminRoutes: Routes = [
         component: CustomersComponent,
       },
       {
-        path: 'deliveries',
-        component: DeliveriesComponent,
+        path: 'parcel-details/:parcelId',
+        component: ParcelDetailsComponent,
       },
     ],
   },
@@ -52,9 +53,9 @@ const adminRoutes: Routes = [
     ParcelsComponent,
     CreateParcelComponent,
     CustomersComponent,
-    DeliveriesComponent,
+    ParcelDetailsComponent,
   ],
-  providers: [CanDeactivateGuard, ParcelsService],
+  providers: [CanDeactivateGuard, ParcelsService, CustomersService],
   imports: [
     CommonModule,
     SharedModule,

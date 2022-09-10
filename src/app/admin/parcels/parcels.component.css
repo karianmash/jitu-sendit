@@ -14,12 +14,20 @@
   border-radius: 5px;
 }
 /* search element */
+.search-wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 2rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
 .search-container {
   width: 15rem;
-  height: 2rem;
+  height: 100%;
   display: flex;
-  margin-top: 2rem;
   border-radius: 0 5px 5px 0;
+  border-radius: 6px;
 }
 .search-container input {
   width: 55%;
@@ -27,6 +35,12 @@
   border: none;
   font-size: 1.2rem;
   padding-left: 0.5rem;
+  color: #dbd5d5;
+  background-color: #1d1d1d;
+  border-radius: 6px 0 0 6px;
+}
+.search-container input:focus {
+  outline: none;
 }
 .search-container button {
   width: 45%;
@@ -37,54 +51,87 @@
   font-size: 1.2rem;
   font-weight: 600;
   color: #ffffff;
+  cursor: pointer;
+}
+.search-wrapper form {
+  height: 100%;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #dbd5d5;
+  border-radius: 6px;
+  display: flex;
+  width: 15rem;
+}
+.search-wrapper form select {
+  width: 55%;
+  height: 100%;
+  color: #ffffff;
+  font-size: 1rem;
+  background-color: #1d1d1d;
+  border-radius: 6px 0 0 6px;
+  border: none;
+}
+.search-wrapper form select:focus {
+  outline: none;
+}
+.search-wrapper form button {
+  background-color: #b56923;
+  border-radius: 0 6px 6px 0;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0 0.3px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  width: 45%;
+  height: 100%;
 }
 
 /* tablle items */
 table {
   width: 100%;
-  background-color: #bebdbd;
-  color: #000000;
+  background-color: #211f27;
   font-size: 1rem;
   margin-top: 2rem;
   border-radius: 4px;
-  border: none;
   border-collapse: collapse;
 }
 thead tr,
 tbody tr {
   height: 2.5rem;
   margin-top: 2rem;
-  /* border: 1px solid; */
 }
 tbody tr:nth-child(o) {
   background-color: #cc4f4f;
 }
 thead tr th,
 tbody tr td {
+  border: none;
   text-align: start;
-  color: #272525;
+  color: #ffffff;
   padding: 0.5rem;
   border: 2px solid rgb(110, 110, 110);
 }
+tbody tr td:first-child {
+  cursor: pointer;
+}
+tbody tr td:first-child:hover {
+  background-color: #888787;
+}
 tbody tr .action {
-  padding: 0;
   height: 100%;
   text-align: center;
 }
-tbody tr .action a {
-  margin-right: 1.5rem;
-  font-size: 1.2rem;
+tbody tr .action fa-icon {
+  font-size: 1.1rem;
+  color: #ff0000;
+  cursor: pointer;
 }
-tbody tr .action a:first-child {
-  color: #1d81bb;
-}
-tbody tr .action a:nth-child(2) {
-  color: #2a9e19;
-}
-tbody tr .action a:last-child {
-  margin-right: 0;
-  color: #e73737;
-}
-tbody tr .action a:hover {
+tbody tr .action fa-icon:hover {
   opacity: 0.7;
 }

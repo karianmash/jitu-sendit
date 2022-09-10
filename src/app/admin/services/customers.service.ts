@@ -1,18 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Injectable } from '@angular/core';
 import { UserParcel } from 'src/app/interface/user';
 
-@Component({
-  selector: 'app-deliveries',
-  templateUrl: './deliveries.component.html',
-  styleUrls: ['./deliveries.component.css'],
+@Injectable({
+  providedIn: 'root',
 })
-export class DeliveriesComponent implements OnInit {
-  fatrash = faTrash;
+export class CustomersService {
+  constructor() {}
 
-  noDeliveries: number;
-
-  deliveries: UserParcel[] = [
+  private customers: UserParcel[] = [
     {
       username: 'Ian Macharia',
       email: 'ian@gmail.com',
@@ -57,11 +52,14 @@ export class DeliveriesComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  public get getCustomers() {
+    return this.customers;
+  }
 
-  ngOnInit(): void {
-    if (this.deliveries.length > 0) {
-      this.noDeliveries = this.deliveries.length;
-    }
+  // search customer
+  public searchParcel(customerName: string) {
+    return this.customers.filter(
+      (customer) => customer.username == customerName
+    );
   }
 }
