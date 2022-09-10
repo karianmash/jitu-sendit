@@ -1,15 +1,29 @@
 <div class="parcels-container" *ngIf="parcels.length > 0">
   <!-- info-bar -->
-  <div class="info-bar">{{ noParcels }} Parcels Found</div>
-  <!-- search -->
-  <div class="search-container">
-    <input type="text" placeholder="Search" name="parcel" />
-    <button>Search</button>
+  <div class="info-bar">{{ numberOfParcels }} Parcels Found</div>
+
+  <!-- Search feature -->
+  <div class="search-wrapper">
+    <!-- search -->
+    <div class="search-container">
+      <input type="text" placeholder="Search" [(ngModel)]="searchItem" />
+      <button (click)="searchParcel()">Search</button>
+    </div>
+
+    <!-- filter status -->
+    <form [formGroup]="reactiveFilterForm" (ngSubmit)="filterParcels()">
+      <select name="status" id="location" formControlName="parcelStatus">
+        <option value="All">All</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+        <option value="Canceled">Canceled</option>
+      </select>
+      <button type="submit">Filter</button>
+    </form>
   </div>
 
-  <!-- Parcels table -->
+  <!-- Table to display parcels -->
   <table>
-    <!-- table header -->
     <thead>
       <tr>
         <th>Tracking id</th>
@@ -22,15 +36,8 @@
         <th>Action</th>
       </tr>
     </thead>
-
-    <!-- table body -->
     <tbody>
-      <!-- parcel -->
-      <tr
-        *ngFor="let parcel of parcels; let i = index"
-        id="{{ parcel.trackId }}"
-        (click)="showDetails(parcel.trackId)"
-      >
+      <tr *ngFor="let parcel of parcels" (click)="showDetails(parcel.trackId)">
         <td>{{ parcel.trackId }}</td>
         <td>{{ parcel.shipper }}</td>
         <td>{{ parcel.item }}</td>
@@ -39,11 +46,8 @@
         <td>{{ parcel.location }}</td>
         <td>{{ parcel.price }}</td>
         <td class="action">
-          <!-- edit btn -->
           <fa-icon id="edit" [icon]="faedit"></fa-icon>
-          <!-- mark complete -->
           <fa-icon id="check" [icon]="facheck"></fa-icon>
-          <!-- trash -->
           <fa-icon id="del" [icon]="fatrash"></fa-icon>
         </td>
       </tr>
