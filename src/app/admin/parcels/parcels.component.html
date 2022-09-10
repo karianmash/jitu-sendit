@@ -22,9 +22,15 @@
         <th>Action</th>
       </tr>
     </thead>
+
     <!-- table body -->
-    <tbody *ngFor="let parcel of parcels; let i = index">
-      <tr id="{{ i }}">
+    <tbody>
+      <!-- parcel -->
+      <tr
+        *ngFor="let parcel of parcels; let i = index"
+        id="{{ parcel.trackId }}"
+        (click)="showDetails(parcel.trackId)"
+      >
         <td>{{ parcel.trackId }}</td>
         <td>{{ parcel.shipper }}</td>
         <td>{{ parcel.item }}</td>
@@ -34,11 +40,11 @@
         <td>{{ parcel.price }}</td>
         <td class="action">
           <!-- edit btn -->
-          <a href="#"><fa-icon [icon]="faedit"></fa-icon></a>
+          <fa-icon id="edit" [icon]="faedit"></fa-icon>
           <!-- mark complete -->
-          <a href="#"><fa-icon [icon]="facheck"></fa-icon></a>
+          <fa-icon id="check" [icon]="facheck"></fa-icon>
           <!-- trash -->
-          <a href="#"><fa-icon [icon]="fatrash"></fa-icon></a>
+          <fa-icon id="del" [icon]="fatrash"></fa-icon>
         </td>
       </tr>
     </tbody>

@@ -1,9 +1,6 @@
 <div class="parcel-container">
   <!-- info-bar -->
-  <div class="info-bar">
-    <fa-icon [icon]="faadd"></fa-icon>
-    Add Parcel
-  </div>
+  <div class="info-bar">Parcel: {{ parcelId }}</div>
   <!-- Add parcel -->
   <form
     class="parcel-form"
@@ -16,23 +13,18 @@
       <div>
         <label>Item</label>
         <input type="text" formControlName="item" />
-        <span *ngIf="parcel?.item === 'invalid'">* Item name is required</span>
       </div>
 
       <!-- date -->
       <div>
         <label>Date from</label>
         <input type="date" formControlName="date" />
-        <span *ngIf="parcel?.createdAt === 'invalid'">* Date is required</span>
       </div>
 
       <!-- sender -->
       <div>
         <label>Sender</label>
         <input type="text" formControlName="sender" />
-        <span *ngIf="parcel?.sender === 'invalid'"
-          >* Sender name is required</span
-        >
       </div>
     </div>
 
@@ -42,9 +34,6 @@
       <div>
         <label>Receiver</label>
         <input type="text" formControlName="receiver" />
-        <span *ngIf="parcel?.receiver === 'invalid'"
-          >* Receiver name is required</span
-        >
       </div>
 
       <!-- status -->
@@ -55,9 +44,6 @@
           <option value="Completed">Completed</option>
           <option value="Canceled">Canceled</option>
         </select>
-        <span *ngIf="parcel?.status === 'invalid'"
-          >* Parcel status is required</span
-        >
       </div>
 
       <!-- shipper -->
@@ -68,9 +54,6 @@
           <option value="Amazon Air">Amazon Air</option>
           <option value="UPS Courier">UPS Courier</option>
         </select>
-        <span *ngIf="parcel?.shipper === 'invalid'"
-          >* Shipper name is required</span
-        >
       </div>
     </div>
 
@@ -79,8 +62,7 @@
       <!-- price -->
       <div>
         <label>Price</label>
-        <input type="text" formControlName="price" />
-        <span *ngIf="parcel?.price === 'invalid'">* Price is required</span>
+        <input type="text" formControlName="receiver" />
       </div>
 
       <!-- location -->
@@ -91,9 +73,6 @@
           <option value="kirinyaga">Kirinyaga</option>
           <option value="Nyeri">Nyeri</option>
         </select>
-        <span *ngIf="parcel?.location === 'invalid'"
-          >* Location is required</span
-        >
       </div>
     </div>
 
@@ -111,10 +90,6 @@
           marginheight="0"
           marginwidth="0"
         ></iframe>
-      </div>
-      <!-- submit -->
-      <div>
-        <input type="submit" value="Submit" />
       </div>
     </div>
   </form>

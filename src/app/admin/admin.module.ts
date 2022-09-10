@@ -14,6 +14,7 @@ import { DeliveriesComponent } from './deliveries/deliveries.component';
 import { AuthGuard } from '../auth/service/auth.guard';
 import { CanDeactivateGuard } from '../auth/service/can-deactivate.guard';
 import { ParcelsService } from './services/parcels.service';
+import { ParcelDetailsComponent } from './parcel-details/parcel-details.component';
 
 const adminRoutes: Routes = [
   {
@@ -41,6 +42,10 @@ const adminRoutes: Routes = [
         path: 'deliveries',
         component: DeliveriesComponent,
       },
+      {
+        path: 'parcel-details/:parcelId',
+        component: ParcelDetailsComponent,
+      },
     ],
   },
 ];
@@ -53,6 +58,7 @@ const adminRoutes: Routes = [
     CreateParcelComponent,
     CustomersComponent,
     DeliveriesComponent,
+    ParcelDetailsComponent,
   ],
   providers: [CanDeactivateGuard, ParcelsService],
   imports: [

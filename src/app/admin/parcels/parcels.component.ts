@@ -1,6 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  ViewChild,
+} from '@angular/core';
+import { Router } from '@angular/router';
 import {
   faCheck,
+  faLink,
   faPenToSquare,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
@@ -17,11 +25,12 @@ export class ParcelsComponent implements OnInit {
   faedit = faPenToSquare;
   facheck = faCheck;
   fatrash = faTrash;
+  falink = faLink;
+
+  constructor(private parcelsService: ParcelsService, private router: Router) {}
 
   noParcels: number;
   parcels: Parcel[] = [];
-
-  constructor(private parcelsService: ParcelsService) {}
 
   ngOnInit(): void {
     // get parcels
@@ -30,5 +39,10 @@ export class ParcelsComponent implements OnInit {
     if (this.parcels.length > 0) {
       this.noParcels = this.parcels.length;
     }
+  }
+
+  showDetails(i: string) {
+    // console.log(i);
+    this.router.navigate(['/admin/parcel-details/' + i]);
   }
 }

@@ -66,25 +66,27 @@ tbody tr td {
   padding: 0.5rem;
   border: 2px solid rgb(110, 110, 110);
 }
+tbody tr td:first-child {
+  cursor: pointer;
+}
 tbody tr .action {
-  padding: 0;
   height: 100%;
   text-align: center;
 }
-tbody tr .action a {
-  margin-right: 1.5rem;
-  font-size: 1.2rem;
+tbody tr .action fa-icon {
+  margin-right: 1rem;
+  font-size: 1.1rem;
 }
-tbody tr .action a:first-child {
+tbody tr .action #edit {
   color: #1d81bb;
 }
-tbody tr .action a:nth-child(2) {
+tbody tr .action #check {
   color: #2a9e19;
 }
-tbody tr .action a:last-child {
+tbody tr .action #del {
   margin-right: 0;
   color: #e73737;
 }
-tbody tr .action a:hover {
+tbody tr .action fa-icon:hover {
   opacity: 0.7;
 }

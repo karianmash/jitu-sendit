@@ -9,125 +9,23 @@ export class ParcelsService {
 
   private parcels: Parcel[] = [
     {
-      trackId: '48541693865169',
-      shipper: 'Mash mover',
-      status: 'In Progress',
-      createdAt: '2022.01.03 20:06.256',
-      item: 'Nike shoes',
-      location: 'Nyeri',
-      price: '203',
-    },
-    {
-      trackId: '30542193823695',
-      shipper: 'UPS',
+      trackId: '3054219382',
+      shipper: 'UPS Couriers',
       status: 'Completed',
       createdAt: '2019.08.04 20:06.256',
       item: 'Nike shoes',
       location: 'Nyeri',
       price: '5,010',
     },
-    // {
-    //   trackId: '01854103865127',
-    //   shipper: 'Amazon Air',
-    //   status: 'In Progress',
-    //   createdAt: '2005.09.12 20:06.256',
-    //   item: 'Nike shoes',
-    //   location: 'Nyeri',
-    //   price: '300',
-    // },
-    // {
-    //   trackId: '01854103865127',
-    //   shipper: 'Amazon Air',
-    //   status: 'In Progress',
-    //   createdAt: '2005.09.12 20:06.256',
-    //   item: 'Nike shoes',
-    //   location: 'Nyeri',
-    //   price: '300',
-    // },
-    // {
-    //   trackId: '30542193823695',
-    //   shipper: 'UPS',
-    //   status: 'Completed',
-    //   createdAt: '2019.08.04 20:06.256',
-    //   item: 'Nike shoes',
-    //   location: 'Nyeri',
-    //   price: '5,010',
-    // },
-    // {
-    //   trackId: '01854103865127',
-    //   shipper: 'Amazon Air',
-    //   status: 'In Progress',
-    //   createdAt: '2005.09.12 20:06.256',
-    //   item: 'Nike shoes',
-    //   location: 'Nyeri',
-    //   price: '300',
-    // },
-    // {
-    //   trackId: '01854103865127',
-    //   shipper: 'Amazon Air',
-    //   status: 'In Progress',
-    //   createdAt: '2005.09.12 20:06.256',
-    //   item: 'Nike shoes',
-    //   location: 'Nyeri',
-    //   price: '300',
-    // },
-    // {
-    //   trackId: '30542193823695',
-    //   shipper: 'UPS',
-    //   status: 'Completed',
-    //   createdAt: '2019.08.04 20:06.256',
-    //   item: 'Nike shoes',
-    //   location: 'Nyeri',
-    //   price: '5,010',
-    // },
-    // {
-    //   trackId: '01854103865127',
-    //   shipper: 'Amazon Air',
-    //   status: 'In Progress',
-    //   createdAt: '2005.09.12 20:06.256',
-    //   item: 'Nike shoes',
-    //   location: 'Nyeri',
-    //   price: '300',
-    // },
-    // {
-    //   trackId: '01854103865127',
-    //   shipper: 'Amazon Air',
-    //   status: 'In Progress',
-    //   createdAt: '2005.09.12 20:06.256',
-    //   item: 'Nike shoes',
-    //   location: 'Nyeri',
-    //   price: '300',
-    // },
-    // {
-    //   trackId: '30542193823695',
-    //   shipper: 'UPS',
-    //   status: 'Completed',
-    //   createdAt: '2019.08.04 20:06.256',
-    //   item: 'Nike shoes',
-    //   location: 'Nyeri',
-    //   price: '5,010',
-    // },
-    // {
-    //   trackId: '01854103865127',
-    //   shipper: 'Amazon Air',
-    //   status: 'In Progress',
-    //   createdAt: '2005.09.12 20:06.256',
-    //   item: 'Nike shoes',
-    //   location: 'Nyeri',
-    //   price: '300',
-    // },
-    // {
-    //   trackId: '01854103865127',
-    //   shipper: 'Amazon Air',
-    //   status: 'In Progress',
-    //   createdAt: '2005.09.12 20:06.256',
-    //   item: 'Nike shoes',
-    //   location: 'Nyeri',
-    //   price: '300',
-    // },
   ];
 
+  // Get parcels
   public get getParcels() {
     return this.parcels;
+  }
+
+  // Register parcel
+  public registerParcel(parcel: Parcel) {
+    this.parcels.push(parcel);
   }
 }
