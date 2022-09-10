@@ -49,8 +49,7 @@
 /* tablle items */
 table {
   width: 100%;
-  background-color: #bebdbd;
-  color: #000000;
+  background-color: #211f27;
   font-size: 1rem;
   margin-top: 2rem;
   border-radius: 4px;
@@ -62,13 +61,13 @@ tbody tr {
   height: 2.5rem;
   margin-top: 2rem;
 }
-tbody tr:nth-child(o) {
+tbody tr:nth-child(0) {
   background-color: #cc4f4f;
 }
 thead tr th,
 tbody tr td {
   text-align: start;
-  color: #272525;
+  color: #ffffff;
   padding: 0.5rem;
   border: 2px solid rgb(110, 110, 110);
 }

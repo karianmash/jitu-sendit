@@ -9,17 +9,16 @@ import { CustomersService } from '../services/customers.service';
   styleUrls: ['./customers.component.css'],
 })
 export class CustomersComponent implements OnInit {
+  // icons
   fatrash = faTrash;
 
   numberOfCustomers: number;
   customerName: string = '';
-
   customers: UserParcel[] = [];
 
   constructor(private customersService: CustomersService) {}
 
   ngOnInit(): void {
-    // get customers
     this.customers = this.customersService.getCustomers;
 
     if (this.customers.length > 0) {
@@ -29,8 +28,6 @@ export class CustomersComponent implements OnInit {
 
   // search parcel
   searchParcel() {
-    // this.customers = this.customersService.searchParcel(this.customerName);
-    // console.log(this.customerName);
-    console.log(this.customersService.searchParcel(this.customerName));
+    this.customers = this.customersService.searchParcel(this.customerName);
   }
 }

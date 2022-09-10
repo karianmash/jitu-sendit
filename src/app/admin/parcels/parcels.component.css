@@ -95,50 +95,42 @@
 /* tablle items */
 table {
   width: 100%;
-  background-color: #bebdbd;
-  color: #000000;
+  background-color: #211f27;
   font-size: 1rem;
   margin-top: 2rem;
   border-radius: 4px;
-  border: none;
   border-collapse: collapse;
 }
 thead tr,
 tbody tr {
   height: 2.5rem;
   margin-top: 2rem;
-  /* border: 1px solid; */
 }
 tbody tr:nth-child(o) {
   background-color: #cc4f4f;
 }
 thead tr th,
 tbody tr td {
+  border: none;
   text-align: start;
-  color: #272525;
+  color: #ffffff;
   padding: 0.5rem;
   border: 2px solid rgb(110, 110, 110);
 }
 tbody tr td:first-child {
   cursor: pointer;
 }
+tbody tr td:first-child:hover {
+  background-color: #888787;
+}
 tbody tr .action {
   height: 100%;
   text-align: center;
 }
 tbody tr .action fa-icon {
-  margin-right: 1rem;
   font-size: 1.1rem;
-}
-tbody tr .action #edit {
-  color: #1d81bb;
-}
-tbody tr .action #check {
-  color: #2a9e19;
-}
-tbody tr .action #del {
-  margin-right: 0;
-  color: #e73737;
+  color: #ff0000;
+  cursor: pointer;
 }
 tbody tr .action fa-icon:hover {
   opacity: 0.7;

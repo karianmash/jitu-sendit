@@ -59,7 +59,7 @@ export class CustomersService {
   // search customer
   public searchParcel(customerName: string) {
     return this.customers.filter(
-      (customer) => (customer.username = customerName)
+      (customer) => customer.username == customerName
     );
   }
 }
