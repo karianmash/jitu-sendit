@@ -9,21 +9,10 @@ export class ParcelsService {
 
   private parcels: Parcel[] = [
     {
-      trackId: '1256498756',
-      shipper: 'UPS Couriers',
-      status: 'In Progress',
-      createdAt: '2019.08.04',
-      sender: 'Christine',
-      receiver: 'Ian',
-      item: 'Jeans',
-      location: 'Nyeri',
-      price: '5,010',
-    },
-    {
-      trackId: '5624578961',
+      trackId: '562457806',
       shipper: 'Amazon Air',
-      status: 'Completed',
-      createdAt: '2019.08.04',
+      status: 'In Progress',
+      createdAt: '2019-08-04',
       sender: 'Martin',
       receiver: 'Hezron',
       item: 'Nike shoes',
@@ -31,24 +20,24 @@ export class ParcelsService {
       price: '5,010',
     },
     {
-      trackId: '923659456',
-      shipper: 'Mash mover',
-      status: 'In Progress',
-      createdAt: '2019.08.04',
+      trackId: '562457896',
+      shipper: 'UPS Courier',
+      status: 'Canceled',
+      createdAt: '2019-08-04',
       sender: 'Ann',
       receiver: 'Wangari',
-      item: 'Dresses',
+      item: 'Nike shoes',
       location: 'Nyeri',
       price: '5,010',
     },
     {
-      trackId: '6542157830',
-      shipper: 'UPS Couriers',
-      status: 'Canceled',
-      createdAt: '2019.08.04',
-      sender: 'Ian',
-      receiver: 'Christine',
-      item: 'Tesla model Y',
+      trackId: '923659456',
+      shipper: 'Mash Movers',
+      status: 'Completed',
+      createdAt: '2019-08-04',
+      sender: 'Christine',
+      receiver: 'Nyakio',
+      item: 'Dresses',
       location: 'Nyeri',
       price: '5,010',
     },
@@ -69,6 +58,23 @@ export class ParcelsService {
     this.parcels.push(parcel);
   }
 
+  // Update parcel
+  public updateParcel(updatedParcel: Parcel) {
+    this.parcels = this.parcels.map((parcel) => {
+      if (parcel.trackId === updatedParcel.trackId) {
+        parcel.item = updatedParcel.item;
+        parcel.createdAt = updatedParcel.createdAt;
+        parcel.sender = updatedParcel.sender;
+        parcel.receiver = updatedParcel.receiver;
+        parcel.status = updatedParcel.status;
+        parcel.shipper = updatedParcel.shipper;
+        parcel.price = updatedParcel.price;
+        parcel.location = updatedParcel.location;
+      }
+      return parcel;
+    });
+  }
+
   // search parcel
   public searchParcel(searchItem: string): Parcel[] {
     return this.parcels.filter((parcel) => parcel.trackId == searchItem);
@@ -81,5 +87,15 @@ export class ParcelsService {
     } else {
       return this.parcels.filter((parcel) => parcel.status == parcelStatus);
     }
+  }
+
+  // delete parcel
+  public deleteParcel(parcelId: string) {
+    // find parcel's index
+    let parcelIndex = this.parcels.findIndex(
+      (parcel) => parcel.trackId == parcelId
+    );
+
+    return this.parcels.splice(parcelIndex, 1);
   }
 }
