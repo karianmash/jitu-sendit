@@ -13,6 +13,8 @@ export class ParcelsService {
       shipper: 'UPS Couriers',
       status: 'In Progress',
       createdAt: '2019.08.04',
+      sender: 'Christine',
+      receiver: 'Ian',
       item: 'Jeans',
       location: 'Nyeri',
       price: '5,010',
@@ -22,6 +24,8 @@ export class ParcelsService {
       shipper: 'Amazon Air',
       status: 'Completed',
       createdAt: '2019.08.04',
+      sender: 'Martin',
+      receiver: 'Hezron',
       item: 'Nike shoes',
       location: 'Nyeri',
       price: '5,010',
@@ -31,6 +35,8 @@ export class ParcelsService {
       shipper: 'Mash mover',
       status: 'In Progress',
       createdAt: '2019.08.04',
+      sender: 'Ann',
+      receiver: 'Wangari',
       item: 'Dresses',
       location: 'Nyeri',
       price: '5,010',
@@ -40,6 +46,8 @@ export class ParcelsService {
       shipper: 'UPS Couriers',
       status: 'Canceled',
       createdAt: '2019.08.04',
+      sender: 'Ian',
+      receiver: 'Christine',
       item: 'Tesla model Y',
       location: 'Nyeri',
       price: '5,010',
@@ -49,6 +57,11 @@ export class ParcelsService {
   // Get parcels
   public get getParcels() {
     return this.parcels;
+  }
+
+  // Get parcels
+  public getSingleParcels(trackId: string) {
+    return this.parcels.filter((parcel) => parcel.trackId == trackId);
   }
 
   // Register parcel

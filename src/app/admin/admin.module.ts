@@ -14,6 +14,7 @@ import { AuthGuard } from '../auth/service/auth.guard';
 import { CanDeactivateGuard } from '../auth/service/can-deactivate.guard';
 import { ParcelsService } from './services/parcels.service';
 import { ParcelDetailsComponent } from './parcel-details/parcel-details.component';
+import { CustomersService } from './services/customers.service';
 
 const adminRoutes: Routes = [
   {
@@ -54,7 +55,7 @@ const adminRoutes: Routes = [
     CustomersComponent,
     ParcelDetailsComponent,
   ],
-  providers: [CanDeactivateGuard, ParcelsService],
+  providers: [CanDeactivateGuard, ParcelsService, CustomersService],
   imports: [
     CommonModule,
     SharedModule,
