@@ -27,6 +27,12 @@
   border: none;
   font-size: 1.2rem;
   padding-left: 0.5rem;
+  color: #dbd5d5;
+  background-color: #1d1d1d;
+  border-radius: 6px 0 0 6px;
+}
+.search-container input:focus {
+  outline: none;
 }
 .search-container button {
   width: 45%;
@@ -37,6 +43,7 @@
   font-size: 1.2rem;
   font-weight: 600;
   color: #ffffff;
+  cursor: pointer;
 }
 
 /* tablle items */
