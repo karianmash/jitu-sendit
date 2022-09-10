@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { UserParcel } from 'src/app/interface/user';
+import { CustomersService } from '../services/customers.service';
 
 @Component({
   selector: 'app-customers',
@@ -10,58 +11,26 @@ import { UserParcel } from 'src/app/interface/user';
 export class CustomersComponent implements OnInit {
   fatrash = faTrash;
 
-  noUsers: number;
+  numberOfCustomers: number;
+  customerName: string = '';
 
-  users: UserParcel[] = [
-    {
-      username: 'Ian Macharia',
-      email: 'ian@gmail.com',
-      parcelsSent: 20,
-      parcelsReceived: 32,
-      totalAmount: 20030,
-    },
-    {
-      username: 'Christine Karimi',
-      email: 'christine@gmail.com',
-      parcelsSent: 3,
-      parcelsReceived: 51,
-      totalAmount: 31000,
-    },
-    {
-      username: 'Ian Macharia',
-      email: 'ian@gmail.com',
-      parcelsSent: 20,
-      parcelsReceived: 32,
-      totalAmount: 20030,
-    },
-    {
-      username: 'Ian Macharia',
-      email: 'ian@gmail.com',
-      parcelsSent: 20,
-      parcelsReceived: 32,
-      totalAmount: 20030,
-    },
-    {
-      username: 'Christine Karimi',
-      email: 'christine@gmail.com',
-      parcelsSent: 3,
-      parcelsReceived: 51,
-      totalAmount: 31000,
-    },
-    {
-      username: 'Ian Macharia',
-      email: 'ian@gmail.com',
-      parcelsSent: 20,
-      parcelsReceived: 32,
-      totalAmount: 20030,
-    },
-  ];
+  customers: UserParcel[] = [];
 
-  constructor() {}
+  constructor(private customersService: CustomersService) {}
 
   ngOnInit(): void {
-    if (this.users.length > 0) {
-      this.noUsers = this.users.length;
+    // get customers
+    this.customers = this.customersService.getCustomers;
+
+    if (this.customers.length > 0) {
+      this.numberOfCustomers = this.customers.length;
     }
+  }
+
+  // search parcel
+  searchParcel() {
+    // this.customers = this.customersService.searchParcel(this.customerName);
+    // console.log(this.customerName);
+    console.log(this.customersService.searchParcel(this.customerName));
   }
 }
