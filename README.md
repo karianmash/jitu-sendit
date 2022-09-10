@@ -2,7 +2,7 @@
 
 A courier service web application that allows users to send and track their parcels
 
-# [Demo](https://to-do-app-smoky.vercel.app/)
+# [Demo](https://jitu-sendit.vercel.app/)
 
 ## Home page of the web app
 
