@@ -1,6 +1,7 @@
 export interface User {
   isLoggedIn?: string;
   fullname?: string;
+  role?: string;
   email: string;
   username?: string;
   password?: string;

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/auth/service/auth.service';
 import { Parcel } from 'src/app/interface/parcel';
+import { User } from 'src/app/interface/user';
 import { ParcelsService } from '../services/parcels.service';
 
 @Component({
@@ -19,8 +21,14 @@ export class CreateParcelComponent implements OnInit {
 
   // Parcels
   parcel: Parcel;
+  // users
+  users: User[];
 
-  constructor(private parcelsService: ParcelsService, private router: Router) {}
+  constructor(
+    private parcelsService: ParcelsService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.reactiveParcelForm = new FormGroup({
@@ -33,6 +41,8 @@ export class CreateParcelComponent implements OnInit {
       price: new FormControl(null, Validators.required),
       location: new FormControl(null, Validators.required),
     });
+
+    this.users = this.authService.getUsers();
   }
 
   // Handle form submission
@@ -58,7 +68,9 @@ export class CreateParcelComponent implements OnInit {
     this.parcel = parcel;
 
     if (this.reactiveParcelForm.valid === true) {
-      console.log(this.parcel);
+      if (this.parcel.sender === this.parcel.receiver) {
+        return alert("Sender and receiver can't be the same");
+      }
 
       this.registerParcel(this.parcel);
     }
