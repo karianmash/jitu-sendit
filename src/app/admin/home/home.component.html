@@ -4,7 +4,7 @@
     <!-- card -->
     <div class="highlight-card">
       <div class="info">
-        <p>$1,000</p>
+        <p>$ {{ sales }}</p>
         <p>Sales</p>
       </div>
       <div class="icon sales">
@@ -14,7 +14,7 @@
     <!-- card -->
     <div class="highlight-card">
       <div class="info">
-        <p>385</p>
+        <p>{{ deliveries }}</p>
         <p>Delivered</p>
       </div>
       <div class="icon deliveries">
@@ -24,7 +24,7 @@
     <!-- card -->
     <div class="highlight-card">
       <div class="info">
-        <p>1,668</p>
+        <p>{{ orders }}</p>
         <p>Orders</p>
       </div>
       <div class="icon orders">
@@ -34,7 +34,7 @@
     <!-- card -->
     <div class="highlight-card">
       <div class="info">
-        <p>832</p>
+        <p>{{ customers }}</p>
         <p>Customers</p>
       </div>
       <div class="icon customers">
@@ -49,11 +49,11 @@
     <div class="common order-info">
       <h3>All Orders</h3>
       <div class="orders">
-        <p>105</p>
+        <p>5</p>
         <p>New Orders</p>
       </div>
       <div class="price">
-        <p>$1,025</p>
+        <p>{{ sales }}</p>
         <p>Orders Price</p>
       </div>
     </div>
@@ -62,16 +62,16 @@
       <h3>User Details</h3>
       <div class="row">
         <div class="users">
-          <p>160</p>
+          <p>{{ customers }}</p>
           <p>Total Users</p>
         </div>
         <div class="inactive">
-          <p>3</p>
+          <p>0</p>
           <p>Deactivated Users</p>
         </div>
       </div>
       <div class="active">
-        <p>157</p>
+        <p>{{ customers }}</p>
         <p>Active Users</p>
       </div>
     </div>

@@ -6,9 +6,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
 import { FirstNamePipe } from '../pipes/first-name.pipe';
 import { NoContentComponent } from './no-content/no-content.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FirstNamePipe, NoContentComponent],
+  declarations: [
+    HeaderComponent,
+    FirstNamePipe,
+    NoContentComponent,
+    ErrorComponent,
+  ],
   imports: [CommonModule, RouterModule],
   exports: [
     HeaderComponent,

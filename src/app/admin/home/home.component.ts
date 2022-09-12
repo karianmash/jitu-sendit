@@ -5,6 +5,8 @@ import {
   faLineChart,
   faTruck,
 } from '@fortawesome/free-solid-svg-icons';
+import { CustomersService } from '../services/customers.service';
+import { ParcelsService } from '../services/parcels.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +19,29 @@ export class HomeComponent implements OnInit {
   facurrency = faDollar;
   facustomers = faCartShopping;
 
-  constructor() {}
+  sales: number;
+  customers: number;
+  orders: number;
+  deliveries: number = 0;
 
-  ngOnInit(): void {}
+  constructor(
+    private parcelsService: ParcelsService,
+    private customersService: CustomersService
+  ) {}
+
+  ngOnInit(): void {
+    // get sales
+    this.sales = this.parcelsService.getTotalParcelPrice();
+    // number of customers
+    this.customers = this.customersService.getCustomers.length;
+    // number of orders
+    this.orders = this.parcelsService.getParcels.length;
+
+    // number of deliveries
+    this.parcelsService.getParcels.forEach((parcel) => {
+      if (parcel.status === 'Completed') {
+        this.deliveries += 1;
+      }
+    });
+  }
 }

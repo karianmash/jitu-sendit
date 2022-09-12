@@ -18,7 +18,7 @@ export class ParcelsService {
       receiver: 'christine@gmail.com',
       item: 'Nike shoes',
       location: 'Nyeri',
-      price: '5,010',
+      price: '5010',
     },
     {
       trackId: '562457896',
@@ -29,7 +29,7 @@ export class ParcelsService {
       receiver: 'ann@gmail.com',
       item: 'Nike shoes',
       location: 'Nyeri',
-      price: '5,010',
+      price: '5010',
     },
     {
       trackId: '923659456',
@@ -40,13 +40,23 @@ export class ParcelsService {
       receiver: 'ianmachariak17@gmail.com',
       item: 'Dresses',
       location: 'Nyeri',
-      price: '5,010',
+      price: '5010',
     },
   ];
 
   // Get parcels
   public get getParcels() {
     return this.parcels;
+  }
+
+  // Get total parcels' price
+  public getTotalParcelPrice() {
+    let priceAmount = 0;
+
+    this.parcels.forEach((parcel) => {
+      priceAmount += parseInt(parcel.price);
+    });
+    return priceAmount;
   }
 
   // Get parcels sent by me
