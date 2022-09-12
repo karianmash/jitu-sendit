@@ -29,7 +29,11 @@
       <!-- sender -->
       <div>
         <label>Sender</label>
-        <input type="text" formControlName="sender" />
+        <select formControlName="sender" id="status">
+          <option *ngFor="let user of users" [value]="user.email">
+            {{ user.email }}
+          </option>
+        </select>
         <span *ngIf="parcel?.sender === 'invalid'"
           >* Sender name is required</span
         >
@@ -41,7 +45,11 @@
       <!-- receiver -->
       <div>
         <label>Receiver</label>
-        <input type="text" formControlName="receiver" />
+        <select formControlName="receiver" id="status">
+          <option *ngFor="let user of users" [value]="user.email">
+            {{ user.email }}
+          </option>
+        </select>
         <span *ngIf="parcel?.receiver === 'invalid'"
           >* Receiver name is required</span
         >
@@ -51,7 +59,7 @@
       <div>
         <label>Status</label>
         <select formControlName="status" id="status">
-          <option value="In progress">In Progress</option>
+          <option value="In Progress">In Progress</option>
           <option value="Completed">Completed</option>
           <option value="Canceled">Canceled</option>
         </select>

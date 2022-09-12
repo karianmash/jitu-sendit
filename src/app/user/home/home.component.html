@@ -1,0 +1,84 @@
+<div class="parcel-container" *ngIf="parcel.length > 0; else fallback">
+  <!-- info-bar -->
+  <!-- <div class="info-bar">Parcel: {{ parcelId }}</div> -->
+  <!-- Add parcel -->
+  <form class="parcel-form" [formGroup]="reactiveUserForm">
+    <!-- first row -->
+    <div class="row1">
+      <!-- item -->
+      <div>
+        <label>Item</label>
+        <input type="text" formControlName="item" readonly />
+      </div>
+
+      <!-- date -->
+      <div>
+        <label>Date from</label>
+        <input type="date" formControlName="date" readonly />
+      </div>
+
+      <!-- sender -->
+      <div>
+        <label>Sender</label>
+        <input type="text" formControlName="sender" readonly />
+      </div>
+    </div>
+
+    <!-- secord row -->
+    <div class="row2">
+      <!-- receiver -->
+      <div>
+        <label>Receiver</label>
+        <input type="text" formControlName="receiver" readonly />
+      </div>
+
+      <!-- status -->
+      <div>
+        <label>Status</label>
+        <input type="text" formControlName="status" readonly />
+      </div>
+
+      <!-- shipper -->
+      <div>
+        <label>Shipper</label>
+        <input type="text" formControlName="shipper" readonly />
+      </div>
+    </div>
+
+    <!-- secord row -->
+    <div class="row2">
+      <!-- price -->
+      <div>
+        <label>Price</label>
+        <input type="text" formControlName="price" readonly />
+      </div>
+
+      <!-- location -->
+      <div>
+        <label>Location</label>
+        <input type="text" formControlName="location" readonly />
+      </div>
+    </div>
+
+    <!-- map/submit -->
+    <div class="row4">
+      <!-- map -->
+      <div class="map">
+        <iframe
+          width="600"
+          height="500"
+          id="gmap_canvas"
+          src="https://maps.google.com/maps?q=the%20jitu&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+        ></iframe>
+      </div>
+    </div>
+  </form>
+</div>
+
+<ng-template #fallback>
+  <app-no-content></app-no-content>
+</ng-template>

@@ -27,7 +27,7 @@ export class CustomersComponent implements OnInit {
   }
 
   // search parcel
-  searchParcel() {
-    this.customers = this.customersService.searchParcel(this.customerName);
+  searchCustomer() {
+    this.customers = this.customersService.searchCustomer(this.customerName);
   }
 }

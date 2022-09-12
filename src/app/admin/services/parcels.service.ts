@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { refCount } from 'rxjs';
 import { Parcel } from 'src/app/interface/parcel';
 
 @Injectable({
@@ -13,33 +14,33 @@ export class ParcelsService {
       shipper: 'Amazon Air',
       status: 'In Progress',
       createdAt: '2019-08-04',
-      sender: 'Martin',
-      receiver: 'Hezron',
+      sender: 'ianmachariak17@gmail.com',
+      receiver: 'christine@gmail.com',
       item: 'Nike shoes',
       location: 'Nyeri',
-      price: '5,010',
+      price: '5010',
     },
     {
       trackId: '562457896',
       shipper: 'UPS Courier',
       status: 'Canceled',
       createdAt: '2019-08-04',
-      sender: 'Ann',
-      receiver: 'Wangari',
+      sender: 'ianmachariak17@gmail.com',
+      receiver: 'ann@gmail.com',
       item: 'Nike shoes',
       location: 'Nyeri',
-      price: '5,010',
+      price: '5010',
     },
     {
       trackId: '923659456',
       shipper: 'Mash Movers',
       status: 'Completed',
       createdAt: '2019-08-04',
-      sender: 'Christine',
-      receiver: 'Nyakio',
+      sender: 'christine@gmail.com',
+      receiver: 'ianmachariak17@gmail.com',
       item: 'Dresses',
       location: 'Nyeri',
-      price: '5,010',
+      price: '5010',
     },
   ];
 
@@ -48,9 +49,34 @@ export class ParcelsService {
     return this.parcels;
   }
 
-  // Get parcels
-  public getSingleParcels(trackId: string) {
+  // Get total parcels' price
+  public getTotalParcelPrice() {
+    let priceAmount = 0;
+
+    this.parcels.forEach((parcel) => {
+      priceAmount += parseInt(parcel.price);
+    });
+    return priceAmount;
+  }
+
+  // Get parcels sent by me
+  public getSentParcels(sender: string) {
+    return this.parcels.filter((parcel) => parcel.sender == sender);
+  }
+
+  // Get parcels sent to me
+  public getReceivedParcels(receiver: string) {
+    return this.parcels.filter((parcel) => parcel.receiver == receiver);
+  }
+
+  // Get parcel's details
+  public getSingleParcel(trackId: string) {
     return this.parcels.filter((parcel) => parcel.trackId == trackId);
+  }
+
+  // Get parcels for a specific user
+  public getSingleParcelUsingEmail(email: string) {
+    return this.parcels.filter((parcel) => parcel.sender == email);
   }
 
   // Register parcel

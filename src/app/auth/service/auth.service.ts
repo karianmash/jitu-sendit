@@ -8,9 +8,51 @@ import { User } from 'src/app/interface/user';
 export class AuthService {
   private isLoggedIn: boolean;
 
-  private users: User[] = [];
-
   constructor(private router: Router) {}
+  // private users: User[] = [];
+
+  private users: User[] = [
+    {
+      fullname: 'Ian Macharia',
+      email: 'ianmachariak17@gmail.com',
+      username: 'ianmacharia',
+      role: 'admin',
+      password: '123',
+    },
+    {
+      fullname: 'Christine Karimi',
+      email: 'christine@gmail.com',
+      username: 'christinekarimi',
+      role: 'user',
+      password: '123',
+    },
+    {
+      fullname: 'Ephraim Murimi',
+      email: 'ephraim@gmail.com',
+      username: 'ephraimmurimi',
+      role: 'user',
+      password: '123',
+    },
+    {
+      fullname: 'Samuel Mwangi',
+      email: 'samuel@gmail.com',
+      username: 'samuelmwangi',
+      role: 'user',
+      password: '123',
+    },
+    {
+      fullname: 'Victor Bakali',
+      email: 'victor@gmail.com',
+      username: 'victorbakali',
+      role: 'user',
+      password: '123',
+    },
+  ];
+
+  // get all users
+  public getUsers() {
+    return this.users;
+  }
 
   // Check login status
   public get loginStatus(): boolean {
@@ -25,7 +67,14 @@ export class AuthService {
   }
 
   // Create user
-  public createUser(user: User): void {
+  public createUser(newUser: User): void {
+    let { ...res } = newUser;
+
+    let user = {
+      ...res,
+      role: 'user',
+    };
+
     this.users.push(user);
   }
 
@@ -38,17 +87,21 @@ export class AuthService {
       ) {
         this.isLoggedIn = true;
 
-        let { confirmPassword, password, ...rest } = userInfo;
+        let { confirmPassword, password, ...res } = userInfo;
 
         let userDetails = {
-          ...rest,
+          ...res,
           isLoggedIn: this.isLoggedIn,
         };
 
         localStorage.setItem('userInfo', JSON.stringify(userDetails));
 
-        // redirect to admin dashboard
-        this.router.navigate(['/admin/dashboard']);
+        // redirect to dashboard
+        if (userDetails.role === 'admin') {
+          this.router.navigate(['/admin/dashboard']);
+        } else {
+          this.router.navigate(['/user/dashboard']);
+        }
       } else {
         this.isLoggedIn = false;
       }

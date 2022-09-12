@@ -1,0 +1,46 @@
+<div class="parcels-container" *ngIf="parcels.length > 0; else fallback">
+  <!-- info-bar -->
+  <div class="info-bar">{{ numberOfParcels }} Parcels Found</div>
+
+  <!-- Search feature -->
+  <div class="search-wrapper">
+    <!-- search -->
+    <div class="search-container">
+      <input type="text" placeholder="Search" [(ngModel)]="searchItem" />
+      <button (click)="searchParcel()">Search</button>
+    </div>
+  </div>
+
+  <!-- Table to display parcels -->
+  <table>
+    <thead>
+      <tr>
+        <th>Tracking id</th>
+        <th>Shipper</th>
+        <th>Item</th>
+        <th>Status</th>
+        <th>Created at</th>
+        <th>Location</th>
+        <th>Price ($)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let parcel of parcels">
+        <td (click)="showDetails(parcel.trackId)">
+          <fa-icon [icon]="falink"></fa-icon>
+          {{ parcel.trackId }}
+        </td>
+        <td>{{ parcel.shipper }}</td>
+        <td>{{ parcel.item }}</td>
+        <td>{{ parcel.status }}</td>
+        <td>{{ parcel.createdAt }}</td>
+        <td>{{ parcel.location }}</td>
+        <td>{{ parcel.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #fallback>
+  <app-no-content></app-no-content>
+</ng-template>

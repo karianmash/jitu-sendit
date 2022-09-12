@@ -10,7 +10,7 @@ export class CustomersService {
   private customers: UserParcel[] = [
     {
       username: 'Ian Macharia',
-      email: 'ian@gmail.com',
+      email: 'ianmachariak17@gmail.com',
       parcelsSent: 20,
       parcelsReceived: 32,
       totalAmount: 20030,
@@ -23,32 +23,25 @@ export class CustomersService {
       totalAmount: 31000,
     },
     {
-      username: 'Ian Macharia',
+      username: 'Ephraim Murimi',
       email: 'ian@gmail.com',
       parcelsSent: 20,
       parcelsReceived: 32,
       totalAmount: 20030,
     },
     {
-      username: 'Ian Macharia',
-      email: 'ian@gmail.com',
+      username: 'Samuel Mwangi',
+      email: 'samuel@gmail.com',
       parcelsSent: 20,
       parcelsReceived: 32,
       totalAmount: 20030,
     },
     {
-      username: 'Christine Karimi',
-      email: 'christine@gmail.com',
+      username: 'Victor Bakali',
+      email: 'victor@gmail.com',
       parcelsSent: 3,
       parcelsReceived: 51,
       totalAmount: 31000,
-    },
-    {
-      username: 'Ian Macharia',
-      email: 'ian@gmail.com',
-      parcelsSent: 20,
-      parcelsReceived: 32,
-      totalAmount: 20030,
     },
   ];
 
@@ -57,7 +50,7 @@ export class CustomersService {
   }
 
   // search customer
-  public searchParcel(customerName: string) {
+  public searchCustomer(customerName: string) {
     return this.customers.filter(
       (customer) => customer.username == customerName
     );
