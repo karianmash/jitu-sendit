@@ -60,7 +60,7 @@ export class CreateParcelComponent implements OnInit {
     };
 
     for (let inputValue in parcel) {
-      if (parcel[inputValue] === null) {
+      if (parcel[inputValue] === null || parcel[inputValue] == '') {
         parcel[inputValue] = 'invalid';
       }
     }
@@ -70,6 +70,10 @@ export class CreateParcelComponent implements OnInit {
     if (this.reactiveParcelForm.valid === true) {
       if (this.parcel.sender === this.parcel.receiver) {
         return alert("Sender and receiver can't be the same");
+      }
+
+      if (isNaN(Number(this.parcel.price)) === true) {
+        return alert('Price cannot be of type text!');
       }
 
       this.registerParcel(this.parcel);

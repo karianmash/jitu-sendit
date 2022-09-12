@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   facurrency = faDollar;
   facustomers = faCartShopping;
 
-  sales: number;
+  sales: string;
   customers: number;
   orders: number;
   deliveries: number = 0;
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // get sales
-    this.sales = this.parcelsService.getTotalParcelPrice();
+    this.sales = this.parcelsService.getTotalParcelPrice().toString();
     // number of customers
     this.customers = this.customersService.getCustomers.length;
     // number of orders

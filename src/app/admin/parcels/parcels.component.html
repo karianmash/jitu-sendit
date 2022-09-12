@@ -13,7 +13,7 @@
     <!-- filter status -->
     <form [formGroup]="reactiveFilterForm" (ngSubmit)="filterParcels()">
       <select name="status" id="location" formControlName="parcelStatus">
-        <option value="All">All</option>
+        <option value="All" selected>All</option>
         <option value="In Progress">In Progress</option>
         <option value="Completed">Completed</option>
         <option value="Canceled">Canceled</option>
@@ -47,7 +47,7 @@
         <td>{{ parcel.status }}</td>
         <td>{{ parcel.createdAt }}</td>
         <td>{{ parcel.location }}</td>
-        <td>{{ parcel.price }}</td>
+        <td>{{ parcel.price | formatCurrency }}</td>
         <td class="action">
           <fa-icon
             [icon]="fatrash"

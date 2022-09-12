@@ -13,18 +13,30 @@
       <div>
         <label>Item</label>
         <input type="text" formControlName="item" />
+        <span *ngIf="parcel?.item === 'invalid'">* Item name is required</span>
       </div>
 
       <!-- date -->
       <div>
         <label>Date from</label>
         <input type="date" formControlName="date" />
+        <span *ngIf="parcel?.createdAt === 'invalid'">* Date is required</span>
       </div>
 
       <!-- sender -->
       <div>
-        <label>Sender Email</label>
-        <input type="email" formControlName="sender" />
+        <!-- <label>Sender Email</label>
+        <input type="email" formControlName="sender" /> -->
+
+        <label>Sender</label>
+        <select formControlName="sender" id="status">
+          <option *ngFor="let user of users" [value]="user.email">
+            {{ user.email }}
+          </option>
+        </select>
+        <span *ngIf="parcel?.sender === 'invalid'"
+          >* Sender name is required</span
+        >
       </div>
     </div>
 
@@ -32,8 +44,17 @@
     <div class="row2">
       <!-- receiver -->
       <div>
-        <label>Receiver Email</label>
-        <input type="email" formControlName="receiver" />
+        <!-- <label>Receiver Email</label>
+        <input type="email" formControlName="receiver" /> -->
+        <label>Receiver</label>
+        <select formControlName="receiver" id="status">
+          <option *ngFor="let user of users" [value]="user.email">
+            {{ user.email }}
+          </option>
+        </select>
+        <span *ngIf="parcel?.receiver === 'invalid'"
+          >* Receiver name is required</span
+        >
       </div>
 
       <!-- status -->
@@ -63,6 +84,7 @@
       <div>
         <label>Price</label>
         <input type="text" formControlName="price" />
+        <span *ngIf="parcel?.price === 'invalid'">* Price is required</span>
       </div>
 
       <!-- location -->

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/service/auth.service';
 import { Parcel } from 'src/app/interface/parcel';
+import { User } from 'src/app/interface/user';
 import { ParcelsService } from '../services/parcels.service';
 
 @Component({
@@ -15,12 +17,14 @@ export class ParcelDetailsComponent implements OnInit {
 
   parcels: Parcel[];
   parcel: Parcel;
-
   parcelId: string;
+
+  users: User[];
 
   constructor(
     private _activatedroute: ActivatedRoute,
     private parcelsService: ParcelsService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -52,6 +56,8 @@ export class ParcelDetailsComponent implements OnInit {
         Validators.required
       ),
     });
+
+    this.users = this.authService.getUsers();
   }
 
   // Handle form submission
@@ -69,15 +75,22 @@ export class ParcelDetailsComponent implements OnInit {
     };
 
     for (let inputValue in parcel) {
-      if (parcel[inputValue] === null) {
+      if (parcel[inputValue] === null || parcel[inputValue] == '') {
         parcel[inputValue] = 'invalid';
       }
     }
 
     this.parcel = parcel;
+    console.log(this.parcel);
 
     if (this.reactiveParcelForm.valid === true) {
-      console.log(this.parcel);
+      if (this.parcel.sender === this.parcel.receiver) {
+        return alert("Sender and receiver can't be the same");
+      }
+
+      if (isNaN(Number(this.parcel.price)) === true) {
+        return alert('Price cannot be of type text!');
+      }
 
       this.updateParcel(this.parcel);
     }

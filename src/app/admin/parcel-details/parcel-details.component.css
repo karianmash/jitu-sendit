@@ -46,6 +46,7 @@
   margin-bottom: 1rem;
 }
 .row1 div input,
+.row1 div select,
 .row2 div input,
 .row2 div select {
   height: 2rem;
