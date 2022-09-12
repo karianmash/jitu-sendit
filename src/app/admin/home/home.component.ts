@@ -31,17 +31,17 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // get sales
-    this.sales = this.parcelsService.getTotalParcelPrice().toString();
+    // this.sales = this.parcelsService.getTotalParcelPrice().toString();
     // number of customers
     this.customers = this.customersService.getCustomers.length;
     // number of orders
-    this.orders = this.parcelsService.getParcels.length;
+    // this.orders = this.parcelsService.getParcels.length;
 
     // number of deliveries
-    this.parcelsService.getParcels.forEach((parcel) => {
-      if (parcel.status === 'Completed') {
-        this.deliveries += 1;
-      }
-    });
+    // this.parcelsService.getParcels.forEach((parcel) => {
+    //   if (parcel.status === 'Completed') {
+    //     this.deliveries += 1;
+    //   }
+    // });
   }
 }

@@ -82,7 +82,7 @@ export class CreateParcelComponent implements OnInit {
 
   // Register parcel
   registerParcel(parcel: Parcel) {
-    this.parcelsService.registerParcel(parcel);
+    // this.parcelsService.registerParcel(parcel);
     this.router.navigate(['/admin/parcels']);
   }
 }

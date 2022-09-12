@@ -26,7 +26,7 @@ export class SentComponent implements OnInit {
     let userEmail = JSON.parse(localStorage.getItem('userInfo')).email;
 
     // get parcels
-    this.parcels = this.parcelsService.getSentParcels(userEmail);
+    // this.parcels = this.parcelsService.getSentParcels(userEmail);
 
     if (this.parcels.length > 0) {
       this.numberOfParcels = this.parcels.length;
@@ -35,7 +35,7 @@ export class SentComponent implements OnInit {
 
   // search parcel
   searchParcel() {
-    this.parcels = this.parcelsService.searchParcel(this.searchItem);
+    // this.parcels = this.parcelsService.searchParcel(this.searchItem);
   }
 
   // parcel details

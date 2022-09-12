@@ -7,8 +7,11 @@ import {
   faPenToSquare,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
+import { Store } from '@ngrx/store';
 import { Parcel } from 'src/app/interface/parcel';
+import { getParcel, ParcelState } from 'src/app/Redux/reducers/ParcelsReducers';
 import { ParcelsService } from '../services/parcels.service';
+import * as Actions from '../../Redux/actions/ParcelsActions';
 
 @Component({
   selector: 'app-parcels',
@@ -22,10 +25,10 @@ export class ParcelsComponent implements OnInit {
   fatrash = faTrash;
   falink = faLink;
 
-  constructor(private parcelsService: ParcelsService, private router: Router) {}
+  constructor( private router: Router, private store: Store<ParcelState>) {}
 
   numberOfParcels: number;
-  parcels: Parcel[] = [];
+  parcels$ = this.store.select(getParcel);
   searchItem: string = '';
 
   // Form object
@@ -38,10 +41,15 @@ export class ParcelsComponent implements OnInit {
     });
 
     // get parcels
-    this.parcels = this.parcelsService.getParcels;
-    if (this.parcels.length > 0) {
-      this.numberOfParcels = this.parcels.length;
-    }
+    // this.parcels = this.parcelsService.getParcels;
+    // if (this.parcels.length > 0) {
+    //   this.numberOfParcels = this.parcels.length;
+    // }
+    this.loadParcels();
+  }
+
+  loadParcels() {
+    this.store.dispatch(Actions.LoadParcels());
   }
 
   // parcel details
@@ -51,19 +59,19 @@ export class ParcelsComponent implements OnInit {
 
   // search parcel
   searchParcel() {
-    this.parcels = this.parcelsService.searchParcel(this.searchItem);
+    // this.parcels = this.parcelsService.searchParcel(this.searchItem);
   }
 
   // Filter parcel
-  filterParcels(): void {
-    this.parcels = this.parcelsService.filterParcels(
-      this.reactiveFilterForm.value.parcelStatus
-    );
-  }
+  // filterParcels(): void {
+  //   this.parcels = this.parcelsService.filterParcels(
+  //     this.reactiveFilterForm.value.parcelStatus
+  //   );
+  // }
 
   // delete parcel
-  deleteParcel(parcelId: string) {
-    // this.parcels = this.parcelsService.deleteParcel(parcelId);
-    console.log(this.parcelsService.deleteParcel(parcelId));
-  }
+  // deleteParcel(parcelId: string) {
+  //   // this.parcels = this.parcelsService.deleteParcel(parcelId);
+  //   console.log(this.parcelsService.deleteParcel(parcelId));
+  // }
 }

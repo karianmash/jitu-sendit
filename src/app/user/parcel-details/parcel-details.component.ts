@@ -26,7 +26,7 @@ export class ParcelDetailsComponent implements OnInit {
       this.parcelId = params.get('parcelId');
     });
 
-    this.parcel = this.parcelsService.getSingleParcel(this.parcelId);
+    // this.parcel = this.parcelsService.getSingleParcel(this.parcelId);
 
     this.reactiveUserForm = new FormGroup({
       item: new FormControl(`${this.parcel[0].item}`, Validators.required),

@@ -33,7 +33,7 @@ export class ParcelDetailsComponent implements OnInit {
       this.parcelId = params.get('parcelId');
     });
 
-    this.parcels = this.parcelsService.getSingleParcel(this.parcelId);
+    // this.parcels = this.parcelsService.getSingleParcel(this.parcelId);
 
     this.reactiveParcelForm = new FormGroup({
       item: new FormControl(`${this.parcels[0].item}`, Validators.required),
@@ -98,7 +98,7 @@ export class ParcelDetailsComponent implements OnInit {
 
   // Register parcel
   updateParcel(parcel: Parcel) {
-    this.parcelsService.updateParcel(parcel);
+    // this.parcelsService.updateParcel(parcel);
     this.router.navigate(['/admin/parcels']);
   }
 }

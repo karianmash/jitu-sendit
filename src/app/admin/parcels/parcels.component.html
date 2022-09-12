@@ -1,4 +1,4 @@
-<div class="parcels-container" *ngIf="parcels.length > 0; else fallback">
+<div class="parcels-container" *ngIf="parcels$ | async as parcels">
   <!-- info-bar -->
   <div class="info-bar">{{ numberOfParcels }} Parcels Found</div>
 
@@ -11,7 +11,7 @@
     </div>
 
     <!-- filter status -->
-    <form [formGroup]="reactiveFilterForm" (ngSubmit)="filterParcels()">
+    <!-- <form [formGroup]="reactiveFilterForm" (ngSubmit)="filterParcels()">
       <select name="status" id="location" formControlName="parcelStatus">
         <option value="All" selected>All</option>
         <option value="In Progress">In Progress</option>
@@ -19,7 +19,7 @@
         <option value="Canceled">Canceled</option>
       </select>
       <button type="submit">Filter</button>
-    </form>
+    </form> -->
   </div>
 
   <!-- Table to display parcels -->
@@ -47,13 +47,13 @@
         <td>{{ parcel.status }}</td>
         <td>{{ parcel.createdAt }}</td>
         <td>{{ parcel.location }}</td>
-        <td>{{ parcel.price | formatCurrency }}</td>
-        <td class="action">
+        <!-- <td>{{ parcel.price | formatCurrency }}</td> -->
+        <!-- <td class="action">
           <fa-icon
             [icon]="fatrash"
             (click)="deleteParcel(parcel.trackId)"
           ></fa-icon>
-        </td>
+        </td> -->
       </tr>
     </tbody>
   </table>

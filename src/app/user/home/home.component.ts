@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     let userEmail = JSON.parse(localStorage.getItem('userInfo')).email;
 
-    this.parcel = this.parcelsService.getSingleParcelUsingEmail(userEmail);
+    // this.parcel = this.parcelsService.getSingleParcelUsingEmail(userEmail);
 
     this.reactiveUserForm = new FormGroup({
       item: new FormControl(`${this.parcel[0].item}`, Validators.required),
