@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+// icons
 import {
   faCheck,
   faLink,
@@ -8,10 +10,14 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
-import { Parcel } from 'src/app/interface/parcel';
-import { getParcel, ParcelState } from 'src/app/Redux/reducers/ParcelsReducers';
-import { ParcelsService } from '../services/parcels.service';
-import * as Actions from '../../Redux/actions/ParcelsActions';
+
+// parcel store selectors
+import {
+  getParcel,
+  numberOfParcels,
+} from 'src/app/ngrx-store/selectors/parcel.selectors';
+import { ParcelState } from 'src/app/ngrx-store/models/parcel.model';
+import * as Actions from '../../ngrx-store/actions/parcel.actions';
 
 @Component({
   selector: 'app-parcels',
@@ -25,9 +31,9 @@ export class ParcelsComponent implements OnInit {
   fatrash = faTrash;
   falink = faLink;
 
-  constructor( private router: Router, private store: Store<ParcelState>) {}
+  constructor(private router: Router, private store: Store<ParcelState>) {}
 
-  numberOfParcels: number;
+  numberOfParcels$ = this.store.select(numberOfParcels);
   parcels$ = this.store.select(getParcel);
   searchItem: string = '';
 
@@ -41,10 +47,6 @@ export class ParcelsComponent implements OnInit {
     });
 
     // get parcels
-    // this.parcels = this.parcelsService.getParcels;
-    // if (this.parcels.length > 0) {
-    //   this.numberOfParcels = this.parcels.length;
-    // }
     this.loadParcels();
   }
 

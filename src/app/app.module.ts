@@ -6,13 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { HeroComponent } from './hero/hero.component';
+
 import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { ParcelEffectsService } from './Redux/effects/ParcelsEffects';
-import { ParcelReducer } from './Redux/reducers/ParcelsReducers';
-import { environment } from 'src/environments/environment';
+
+import { ParcelEffectsService } from './ngrx-store/effects/parcel.effects';
+import { ParcelReducer } from './ngrx-store/reducers/parcel.reducer';
 
 @NgModule({
   declarations: [AppComponent, HeroComponent],
@@ -22,13 +23,12 @@ import { environment } from 'src/environments/environment';
     AuthModule,
     HttpClientModule,
     AppRoutingModule,
+    StoreModule.forRoot({ parcel: ParcelReducer }),
+    EffectsModule.forRoot([ParcelEffectsService]),
     StoreDevtoolsModule.instrument({
       name: 'Parcel',
       maxAge: 25,
-      logOnly: environment.production,
     }),
-    StoreModule.forRoot({ parcel: ParcelReducer }),
-    EffectsModule.forRoot([ParcelEffectsService]),
   ],
   providers: [],
   bootstrap: [AppComponent],

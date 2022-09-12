@@ -1,6 +1,6 @@
 <div class="parcels-container" *ngIf="parcels$ | async as parcels">
   <!-- info-bar -->
-  <div class="info-bar">{{ numberOfParcels }} Parcels Found</div>
+  <div class="info-bar">{{ numberOfParcels$ | async }} Parcels Found</div>
 
   <!-- Search feature -->
   <div class="search-wrapper">
@@ -47,13 +47,13 @@
         <td>{{ parcel.status }}</td>
         <td>{{ parcel.createdAt }}</td>
         <td>{{ parcel.location }}</td>
-        <!-- <td>{{ parcel.price | formatCurrency }}</td> -->
-        <!-- <td class="action">
-          <fa-icon
+        <td>{{ parcel.price | formatCurrency }}</td>
+        <td class="action">
+          <!-- <fa-icon
             [icon]="fatrash"
             (click)="deleteParcel(parcel.trackId)"
-          ></fa-icon>
-        </td> -->
+          ></fa-icon> -->
+        </td>
       </tr>
     </tbody>
   </table>
