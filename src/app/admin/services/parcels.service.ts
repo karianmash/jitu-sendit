@@ -17,17 +17,6 @@ export class ParcelsService {
     return this.http.get<Parcel[]>(`${this.baseUrl}/parcels`);
   }
 
-  // Get total parcels' price
-  // public getTotalParcelPrice() {
-  //   let priceAmount = 0;
-  //   let parcels = this.http.get<Parcel[]>(`${this.baseUrl}/parcels`);
-
-  //   parcels.forEach((parcel) => {
-  //     priceAmount += parseInt(parcels.price);
-  //   });
-  //   return priceAmount;
-  // }
-
   // Get parcels sent by me
   // public getSentParcels(sender: string) {
   // return this.parcels.filter((parcel) => parcel.sender == sender);

@@ -18,3 +18,31 @@ export const numberOfParcels = createSelector(
   getParcelFeatureState,
   (state) => state.parcels.length
 );
+
+export const numberOfDeliveries = createSelector(
+  getParcelFeatureState,
+  (state) => {
+    let deliveries: number = 0;
+
+    state.parcels.forEach((parcel) => {
+      if (parcel.status === 'Completed') {
+        deliveries += 1;
+      }
+    });
+
+    return deliveries;
+  }
+);
+
+export const totalParcelsPrice = createSelector(
+  getParcelFeatureState,
+  (state) => {
+    let priceAmount = 0;
+
+    state.parcels.forEach((parcel) => {
+      priceAmount += parseInt(parcel.price);
+    });
+
+    return priceAmount.toString();
+  }
+);

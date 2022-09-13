@@ -45,7 +45,6 @@ export class ParcelsComponent implements OnInit {
     this.reactiveFilterForm = new FormGroup({
       parcelStatus: new FormControl(null, Validators.required),
     });
-
     // get parcels
     this.loadParcels();
   }
