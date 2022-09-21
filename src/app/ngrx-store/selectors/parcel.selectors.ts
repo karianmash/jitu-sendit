@@ -46,3 +46,17 @@ export const totalParcelsPrice = createSelector(
     return priceAmount.toString();
   }
 );
+
+// get parcel id
+export const getParcelId = createSelector(
+  getParcelFeatureState,
+  (state) => state.parcelId
+);
+
+// get single parcel
+export const getSingleParcel = createSelector(
+  getParcelFeatureState,
+  getParcelId,
+  (state, parcelId) =>
+    state.parcels.find((parcel) => parcel.track_id === parcelId)
+);

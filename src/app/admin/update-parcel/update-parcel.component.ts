@@ -10,11 +10,11 @@ import { getSingleParcel } from 'src/app/ngrx-store/selectors/parcel.selectors';
 import * as Actions from '../../ngrx-store/actions/parcel.actions';
 
 @Component({
-  selector: 'app-parcel-details',
-  templateUrl: './parcel-details.component.html',
-  styleUrls: ['./parcel-details.component.css'],
+  selector: 'app-update-parcel',
+  templateUrl: './update-parcel.component.html',
+  styleUrls: ['./update-parcel.component.css'],
 })
-export class ParcelDetailsComponent implements OnInit {
+export class UpdateParcelComponent implements OnInit {
   // Form object
   reactiveParcelForm: FormGroup;
 

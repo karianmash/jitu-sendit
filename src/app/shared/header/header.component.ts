@@ -14,11 +14,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     setInterval(() => {
-      const user = JSON.parse(localStorage.getItem('userInfo'));
+      const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
-      if (user) {
-        this.isLoggedIn = user?.isLoggedIn;
-        this.userName = user?.fullname;
+      if (userInfo !== null) {
+        this.isLoggedIn = userInfo?.isLoggedIn;
+        this.userName = userInfo?.user.fullname;
       } else {
         this.isLoggedIn = this.authService.loginStatus;
       }

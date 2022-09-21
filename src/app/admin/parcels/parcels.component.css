@@ -115,6 +115,7 @@ tbody tr td {
   text-align: start;
   color: #ffffff;
   padding: 0.5rem;
+  cursor: pointer;
   border: 2px solid rgb(110, 110, 110);
 }
 tbody tr td:first-child {

@@ -18,6 +18,7 @@ import {
 } from 'src/app/ngrx-store/selectors/parcel.selectors';
 import { ParcelState } from 'src/app/ngrx-store/models/parcel.model';
 import * as Actions from '../../ngrx-store/actions/parcel.actions';
+import { Parcel } from 'src/app/interface/parcel';
 
 @Component({
   selector: 'app-parcels',
@@ -34,7 +35,7 @@ export class ParcelsComponent implements OnInit {
   constructor(private router: Router, private store: Store<ParcelState>) {}
 
   numberOfParcels$ = this.store.select(numberOfParcels);
-  parcels$ = this.store.select(getParcel);
+  parcels: Parcel[];
   searchItem: string = '';
 
   // Form object
@@ -47,6 +48,10 @@ export class ParcelsComponent implements OnInit {
     });
     // get parcels
     this.loadParcels();
+
+    this.store
+      .select(getParcel)
+      .subscribe((parcels) => (this.parcels = parcels));
   }
 
   loadParcels() {
@@ -55,7 +60,15 @@ export class ParcelsComponent implements OnInit {
 
   // parcel details
   showDetails(parcelId: string) {
+    this.store.dispatch(Actions.SetParcelId({ id: parcelId }));
+
     this.router.navigate(['/admin/parcel-details/' + parcelId]);
+  }
+
+  editParcel(parcelId: string) {
+    this.store.dispatch(Actions.SetParcelId({ id: parcelId }));
+
+    this.router.navigate(['/admin/update-parcel/' + parcelId]);
   }
 
   // search parcel

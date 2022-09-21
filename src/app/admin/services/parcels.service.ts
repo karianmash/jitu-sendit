@@ -1,53 +1,54 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, refCount } from 'rxjs';
+import { baseUrl } from 'src/app/common/api';
 import { Parcel } from 'src/app/interface/parcel';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ParcelsService {
-  baseUrl: string = 'http://localhost:3000';
-  // parcels$: Observable<Parcel[]>;
-
   constructor(private http: HttpClient) {}
 
   // Get parcels
   public get getParcels(): Observable<Parcel[]> {
-    return this.http.get<Parcel[]>(`${this.baseUrl}/parcels`);
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+
+    return this.http.get<Parcel[]>(`${baseUrl}/parcels/get_parcels`, {
+      headers: new HttpHeaders().set(
+        'Authorization',
+        `Bearer ${userInfo.token}`
+      ),
+    });
   }
 
-  // Get parcels sent by me
-  // public getSentParcels(sender: string) {
-  // return this.parcels.filter((parcel) => parcel.sender == sender);
-  // }
+  // Create parcel
+  public createParcel(parcel: Parcel): Observable<{ message: string }> {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
-  // Get parcels sent to me
-  // public getReceivedParcels(receiver: string) {
-  // return this.parcels.filter((parcel) => parcel.receiver == receiver);
-  // }
+    return this.http.post<{ message: string }>(
+      `${baseUrl}/parcels/create_parcel`,
+      parcel,
+      {
+        headers: new HttpHeaders().set(
+          'Authorization',
+          `Bearer ${userInfo.token}`
+        ),
+      }
+    );
+  }
 
   // Get parcel's details
-  // public getSingleParcel(trackId: string) {
-  // return this.parcels.filter((parcel) => parcel.trackId == trackId);
-  // }
-
-  // Get parcels for a specific user
-  // public getSingleParcelUsingEmail(email: string) {
-  // return this.parcels.filter((parcel) => parcel.sender == email);
-  // }
-
-  // Register parcel
-  // public registerParcel(parcel: Parcel): void {
-  // this.parcels.push(parcel);
-  // }
+  public getSingleParcel(trackId: string): Observable<Parcel> {
+    return this.http.get<Parcel>(`${baseUrl}/parcels/${trackId}`);
+  }
 
   // Update parcel
-  // public updateParcel(updatedParcel: Parcel) {
+  // public updateParcel(updatedParcel: Parcel): Observable<{ message: string }> {
   // this.parcels = this.parcels.map((parcel) => {
-  //   if (parcel.trackId === updatedParcel.trackId) {
-  //     parcel.item = updatedParcel.item;
-  //     parcel.createdAt = updatedParcel.createdAt;
+  //   if (parcel.trackId === updatedParcel.track_id) {
+  //     parcel.item = updatedParcel.item_name;
+  //     parcel.createdAt = updatedParcel.weight;
   //     parcel.sender = updatedParcel.sender;
   //     parcel.receiver = updatedParcel.receiver;
   //     parcel.status = updatedParcel.status;
@@ -57,6 +58,27 @@ export class ParcelsService {
   //   }
   //   return parcel;
   // });
+
+  //   return this.http.patch<{ message: string }>(
+  //     `${this.baseUrl}/parcels`,
+  //     updatedParcel
+  //   );
+  // }
+
+  // Get parcels sent to me
+  // public getReceivedParcels(receiver: string) {
+  // return this.parcels.filter((parcel) => parcel.receiver == receiver);
+  //   return this.http.get<Parcel[]>(`${this.baseUrl}/parcels`);
+  // }
+
+  // Get parcels sent by me
+  // public getSentParcels(sender: string) {
+  // return this.parcels.filter((parcel) => parcel.sender == sender);
+  // }
+
+  // Get parcels for a specific user
+  // public getSingleParcelUsingEmail(email: string) {
+  // return this.parcels.filter((parcel) => parcel.sender == email);
   // }
 
   // search parcel

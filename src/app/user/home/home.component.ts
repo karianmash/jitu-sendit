@@ -21,25 +21,15 @@ export class HomeComponent implements OnInit {
     // this.parcel = this.parcelsService.getSingleParcelUsingEmail(userEmail);
 
     this.reactiveUserForm = new FormGroup({
-      item: new FormControl(`${this.parcel[0].item}`, Validators.required),
-      date: new FormControl(`${this.parcel[0].createdAt}`, [
-        Validators.required,
-      ]),
-      sender: new FormControl(`${this.parcel[0].sender}`, Validators.required),
-      receiver: new FormControl(
-        `${this.parcel[0].receiver}`,
-        Validators.required
-      ),
-      status: new FormControl(`${this.parcel[0].status}`, Validators.required),
-      shipper: new FormControl(
-        `${this.parcel[0].shipper}`,
-        Validators.required
-      ),
-      price: new FormControl(`${this.parcel[0].price}`, Validators.required),
-      location: new FormControl(
-        `${this.parcel[0].location}`,
-        Validators.required
-      ),
+      item: new FormControl(`${this.parcel[0].item_name}`),
+      weight: new FormControl(`${this.parcel[0].weight}`),
+      sender: new FormControl(`${this.parcel[0].sender}`),
+      receiver: new FormControl(`${this.parcel[0].receiver}`),
+      status: new FormControl(`${this.parcel[0].status}`),
+      shipper: new FormControl(`${this.parcel[0].shipper}`),
+      price: new FormControl(`${this.parcel[0].price}`),
+      origin_location: new FormControl(`${this.parcel[0].origin_location}`),
+      pickup_location: new FormControl(`${this.parcel[0].pick_up_location}`),
     });
   }
 }

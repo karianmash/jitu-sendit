@@ -17,7 +17,7 @@ export class ParcelEffectsService {
     return this.actions.pipe(
       ofType(ParcelsActions.LoadParcels),
 
-      // Projects each source value to the same Observable which is merged 
+      // Projects each source value to the same Observable which is merged
       // multiple times in a serialized fashion on the output Observable.
       concatMap(() =>
         this.parcelsService.getParcels.pipe(
@@ -29,4 +29,40 @@ export class ParcelEffectsService {
       )
     );
   });
+
+  // create parcel
+  createParcel = createEffect(() => {
+    return this.actions.pipe(
+      ofType(ParcelsActions.CreateParcel),
+
+      mergeMap((action) =>
+        this.parcelsService.createParcel(action.newParcel).pipe(
+          map((res) =>
+            ParcelsActions.CreateParcelSuccess({ createdMessage: res.message })
+          ),
+          catchError((error) =>
+            of(ParcelsActions.CreateParcelFailure({ error: error.message }))
+          )
+        )
+      )
+    );
+  });
+
+  // create parcel
+  // updateParcel = createEffect(() => {
+  //   return this.actions.pipe(
+  //     ofType(ParcelsActions.UpdateParcel),
+
+  //     mergeMap((action) =>
+  //       this.parcelsService.updateParcel(action.updatedParcel).pipe(
+  //         map((res) =>
+  //           ParcelsActions.UpdateParcelSuccess({ updateMessage: res.message })
+  //         ),
+  //         catchError((error) =>
+  //           of(ParcelsActions.UpdateParcelFailure({ error: error.message }))
+  //         )
+  //       )
+  //     )
+  //   );
+  // });
 }

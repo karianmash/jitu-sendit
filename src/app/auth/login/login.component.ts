@@ -47,8 +47,10 @@ export class LoginComponent implements OnInit {
 
   // login user
   loginUser(user: User) {
-    if (this.authService.loginUser(user) === false) {
-      this.invalidCreadentials = true;
-    }
+    this.authService.loginUser(user).subscribe({
+      error: (err) => {
+        this.invalidCreadentials = true;
+      },
+    });
   }
 }

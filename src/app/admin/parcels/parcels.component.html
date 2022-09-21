@@ -1,4 +1,4 @@
-<div class="parcels-container" *ngIf="parcels$ | async as parcels">
+<div class="parcels-container" *ngIf="parcels.length > 0; else fallback">
   <!-- info-bar -->
   <div class="info-bar">{{ numberOfParcels$ | async }} Parcels Found</div>
 
@@ -26,28 +26,39 @@
   <table>
     <thead>
       <tr>
+        <th>Edit</th>
         <th>Tracking id</th>
         <th>Shipper</th>
         <th>Item</th>
         <th>Status</th>
-        <th>Created at</th>
-        <th>Location</th>
+        <th>Weight</th>
+        <th>Origin</th>
+        <th>Destination</th>
         <th>Price ($)</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let parcel of parcels">
-        <td (click)="showDetails(parcel.trackId)">
+        <td (click)="editParcel(parcel.track_id)">
           <fa-icon [icon]="falink"></fa-icon>
-          {{ parcel.trackId }}
         </td>
-        <td>{{ parcel.shipper }}</td>
-        <td>{{ parcel.item }}</td>
-        <td>{{ parcel.status }}</td>
-        <td>{{ parcel.createdAt }}</td>
-        <td>{{ parcel.location }}</td>
-        <td>{{ parcel.price | formatCurrency }}</td>
+        <td (click)="showDetails(parcel.track_id)">
+          {{ parcel.track_id }}
+        </td>
+        <td (click)="showDetails(parcel.track_id)">{{ parcel.shipper }}</td>
+        <td (click)="showDetails(parcel.track_id)">{{ parcel.item_name }}</td>
+        <td (click)="showDetails(parcel.track_id)">{{ parcel.status }}</td>
+        <td (click)="showDetails(parcel.track_id)">{{ parcel.weight }}</td>
+        <td (click)="showDetails(parcel.track_id)">
+          {{ parcel.origin_location }}
+        </td>
+        <td (click)="showDetails(parcel.track_id)">
+          {{ parcel.pick_up_location }}
+        </td>
+        <td (click)="showDetails(parcel.track_id)">
+          {{ parcel.price | formatCurrency }}
+        </td>
         <td class="action">
           <!-- <fa-icon
             [icon]="fatrash"

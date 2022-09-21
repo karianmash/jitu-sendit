@@ -1,9 +1,6 @@
 <div class="parcel-container">
   <!-- info-bar -->
-  <div class="info-bar">
-    <fa-icon [icon]="faadd"></fa-icon>
-    Add Parcel
-  </div>
+  <div class="info-bar">Parcel: {{ parcelId }}</div>
   <!-- Add parcel -->
   <form
     class="parcel-form"
@@ -30,6 +27,9 @@
 
       <!-- sender -->
       <div>
+        <!-- <label>Sender Email</label>
+        <input type="email" formControlName="sender" /> -->
+
         <label>Sender</label>
         <select formControlName="sender" id="status">
           <option *ngFor="let user of users" [value]="user.email">
@@ -65,9 +65,6 @@
           <option value="Completed">Completed</option>
           <option value="Canceled">Canceled</option>
         </select>
-        <span *ngIf="parcel?.status === 'invalid'"
-          >* Parcel status is required</span
-        >
       </div>
 
       <!-- shipper -->
@@ -78,9 +75,6 @@
           <option value="Amazon Air">Amazon Air</option>
           <option value="UPS Courier">UPS Courier</option>
         </select>
-        <span *ngIf="parcel?.shipper === 'invalid'"
-          >* Shipper name is required</span
-        >
       </div>
     </div>
 
@@ -101,9 +95,6 @@
           <option value="kirinyaga">Kirinyaga</option>
           <option value="Nyeri">Nyeri</option>
         </select>
-        <span *ngIf="parcel?.origin_location === 'invalid'"
-          >* Location is required</span
-        >
       </div>
 
       <!-- location -->
@@ -114,9 +105,6 @@
           <option value="kirinyaga">Kirinyaga</option>
           <option value="Nyeri">Nyeri</option>
         </select>
-        <span *ngIf="parcel?.pick_up_location === 'invalid'"
-          >* Location is required</span
-        >
       </div>
     </div>
 
