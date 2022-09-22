@@ -9,6 +9,8 @@ export const initialState: ParcelState = {
   createdMessage: '',
   updateMessage: '',
   parcelId: '',
+  status: '',
+  email: '',
 };
 
 export const ParcelReducer = createReducer(
@@ -26,6 +28,15 @@ export const ParcelReducer = createReducer(
   // set parcel id
   on(Actions.SetParcelId, (state, action): ParcelState => {
     return { ...state, parcelId: action.id };
+  }),
+
+  // set parcel status
+  on(Actions.SetParcelStatus, (state, action): ParcelState => {
+    return { ...state, status: action.status };
+  }),
+
+  on(Actions.SetSenderEmail, (state, action): ParcelState => {
+    return { ...state, email: action.email };
   }),
 
   // create parcel

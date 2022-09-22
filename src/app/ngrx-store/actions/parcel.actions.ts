@@ -15,6 +15,17 @@ export const LoadParcelsFailure = createAction(
 // set single parcel's id
 export const SetParcelId = createAction('SetParcelId', props<{ id: string }>());
 
+// set single parcel's status
+export const SetParcelStatus = createAction(
+  'SetParcelStatus',
+  props<{ status: string }>()
+);
+
+export const SetSenderEmail = createAction(
+  'SetParcelStatus',
+  props<{ email: string }>()
+);
+
 // create parcel
 export const CreateParcel = createAction(
   'CreateParcel',

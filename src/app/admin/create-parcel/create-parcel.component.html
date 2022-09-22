@@ -97,9 +97,9 @@
       <div>
         <label>Origin location</label>
         <select formControlName="origin_location">
-          <option value="Nairobi">Nairobi</option>
-          <option value="kirinyaga">Kirinyaga</option>
-          <option value="Nyeri">Nyeri</option>
+          <option *ngFor="let county of counties" value="{{ county }}">
+            {{ county }}
+          </option>
         </select>
         <span *ngIf="parcel?.origin_location === 'invalid'"
           >* Location is required</span
@@ -110,9 +110,9 @@
       <div>
         <label>Pickup location</label>
         <select formControlName="pick_up_location">
-          <option value="Nairobi">Nairobi</option>
-          <option value="kirinyaga">Kirinyaga</option>
-          <option value="Nyeri">Nyeri</option>
+          <option *ngFor="let county of counties" value="{{ county }}">
+            {{ county }}
+          </option>
         </select>
         <span *ngIf="parcel?.pick_up_location === 'invalid'"
           >* Location is required</span

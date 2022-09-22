@@ -6,4 +6,6 @@ export interface ParcelState {
   createdMessage: string;
   updateMessage: string;
   parcelId: string;
+  status: string;
+  email: string;
 }

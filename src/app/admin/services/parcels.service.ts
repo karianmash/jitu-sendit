@@ -44,26 +44,20 @@ export class ParcelsService {
   }
 
   // Update parcel
-  // public updateParcel(updatedParcel: Parcel): Observable<{ message: string }> {
-  // this.parcels = this.parcels.map((parcel) => {
-  //   if (parcel.trackId === updatedParcel.track_id) {
-  //     parcel.item = updatedParcel.item_name;
-  //     parcel.createdAt = updatedParcel.weight;
-  //     parcel.sender = updatedParcel.sender;
-  //     parcel.receiver = updatedParcel.receiver;
-  //     parcel.status = updatedParcel.status;
-  //     parcel.shipper = updatedParcel.shipper;
-  //     parcel.price = updatedParcel.price;
-  //     parcel.location = updatedParcel.location;
-  //   }
-  //   return parcel;
-  // });
+  public updateParcel(updatedParcel: Parcel) {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
-  //   return this.http.patch<{ message: string }>(
-  //     `${this.baseUrl}/parcels`,
-  //     updatedParcel
-  //   );
-  // }
+    return this.http.patch<{ message: string }>(
+      `${baseUrl}/parcels/update_parcel`,
+      updatedParcel,
+      {
+        headers: new HttpHeaders().set(
+          'Authorization',
+          `Bearer ${userInfo.token}`
+        ),
+      }
+    );
+  }
 
   // Get parcels sent to me
   // public getReceivedParcels(receiver: string) {
@@ -81,27 +75,18 @@ export class ParcelsService {
   // return this.parcels.filter((parcel) => parcel.sender == email);
   // }
 
-  // search parcel
-  // public searchParcel(searchItem: string): Parcel[] {
-  // return this.parcels.filter((parcel) => parcel.trackId == searchItem);
-  // }
-
-  // filter parcel
-  // public filterParcels(parcelStatus: string): Parcel[] {
-  // if (parcelStatus === 'All') {
-  //   return this.parcels;
-  // } else {
-  //   return this.parcels.filter((parcel) => parcel.status == parcelStatus);
-  // }
-  // }
-
   // delete parcel
-  // public deleteParcel(parcelId: string) {
-  // find parcel's index
-  //   let parcelIndex = this.parcels.findIndex(
-  //     (parcel) => parcel.trackId == parcelId
-  //   );
+  public deleteParcel(parcel_id: string) {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
-  //   return this.parcels.splice(parcelIndex, 1);
-  // }
+    return this.http.delete<{ message: string }>(
+      `${baseUrl}/parcels/delete_parcel/${parcel_id}`,
+      {
+        headers: new HttpHeaders().set(
+          'Authorization',
+          `Bearer ${userInfo.token}`
+        ),
+      }
+    );
+  }
 }

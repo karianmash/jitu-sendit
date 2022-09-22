@@ -53,10 +53,58 @@ export const getParcelId = createSelector(
   (state) => state.parcelId
 );
 
+// get parcel status
+export const getParcelStatus = createSelector(
+  getParcelFeatureState,
+  (state) => state.status
+);
+
 // get single parcel
 export const getSingleParcel = createSelector(
   getParcelFeatureState,
   getParcelId,
   (state, parcelId) =>
     state.parcels.find((parcel) => parcel.track_id === parcelId)
+);
+
+export const searchParcel = createSelector(
+  getParcelFeatureState,
+  getParcelId,
+  (state, parcelId) =>
+    state.parcels.filter((parcel) => parcel.track_id === parcelId)
+);
+
+export const filterParcel = createSelector(
+  getParcelFeatureState,
+  getParcelStatus,
+  (state, parcelStatus) => {
+    if (parcelStatus === 'All') {
+      return state.parcels;
+    } else {
+      return state.parcels.filter((parcel) => parcel.status === parcelStatus);
+    }
+  }
+);
+
+// get single parcel
+export const numberOfUserParcel = createSelector(
+  getParcelFeatureState,
+  (state) => state.parcels.length
+);
+
+export const getSenderEmail = createSelector(
+  getParcelFeatureState,
+  (state) => state.email
+);
+
+export const sentParcels = createSelector(
+  getParcelFeatureState,
+  getSenderEmail,
+  (state, email) => state.parcels.filter((parcel) => parcel.sender === email)
+);
+
+export const receivedParcels = createSelector(
+  getParcelFeatureState,
+  getSenderEmail,
+  (state, email) => state.parcels.filter((parcel) => parcel.sender !== email)
 );

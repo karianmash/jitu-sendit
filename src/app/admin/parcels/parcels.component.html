@@ -11,7 +11,7 @@
     </div>
 
     <!-- filter status -->
-    <!-- <form [formGroup]="reactiveFilterForm" (ngSubmit)="filterParcels()">
+    <form [formGroup]="reactiveFilterForm" (ngSubmit)="filterParcels()">
       <select name="status" id="location" formControlName="parcelStatus">
         <option value="All" selected>All</option>
         <option value="In Progress">In Progress</option>
@@ -19,7 +19,7 @@
         <option value="Canceled">Canceled</option>
       </select>
       <button type="submit">Filter</button>
-    </form> -->
+    </form>
   </div>
 
   <!-- Table to display parcels -->
@@ -51,19 +51,19 @@
         <td (click)="showDetails(parcel.track_id)">{{ parcel.status }}</td>
         <td (click)="showDetails(parcel.track_id)">{{ parcel.weight }}</td>
         <td (click)="showDetails(parcel.track_id)">
-          {{ parcel.origin_location }}
+          {{ parcel.origin_location | titlecase }}
         </td>
         <td (click)="showDetails(parcel.track_id)">
-          {{ parcel.pick_up_location }}
+          {{ parcel.pick_up_location | titlecase }}
         </td>
         <td (click)="showDetails(parcel.track_id)">
           {{ parcel.price | formatCurrency }}
         </td>
         <td class="action">
-          <!-- <fa-icon
+          <fa-icon
             [icon]="fatrash"
-            (click)="deleteParcel(parcel.trackId)"
-          ></fa-icon> -->
+            (click)="deleteParcel(parcel.parcel_id)"
+          ></fa-icon>
         </td>
       </tr>
     </tbody>

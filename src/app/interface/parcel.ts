@@ -10,4 +10,5 @@ export interface Parcel {
   price: string;
   origin_location?: string;
   pick_up_location?: string;
+  user_id?: string;
 }

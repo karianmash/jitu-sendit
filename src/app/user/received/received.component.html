@@ -21,13 +21,13 @@
         <th>Status</th>
         <th>Weight</th>
         <th>Origin</th>
-        <th>Destination/th></th>
+        <th>Destination</th>
         <th>Price ($)</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let parcel of parcels">
-        <td (click)="showDetails(parcel.track_id)">
+      <tr *ngFor="let parcel of parcels" (click)="showDetails(parcel.track_id)">
+        <td>
           <fa-icon [icon]="falink"></fa-icon>
           {{ parcel.track_id }}
         </td>

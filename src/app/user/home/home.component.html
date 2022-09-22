@@ -1,14 +1,11 @@
-<div class="parcel-container" *ngIf="parcel.length > 0; else fallback">
-  <!-- info-bar -->
-  <!-- <div class="info-bar">Parcel: {{ parcelId }}</div> -->
-  <!-- Add parcel -->
+<div class="parcel-container" *ngIf="userParcels?.length > 0; else fallback">
   <form class="parcel-form" [formGroup]="reactiveUserForm">
     <!-- first row -->
     <div class="row1">
       <!-- item -->
       <div>
         <label>Item</label>
-        <input type="text" formControlName="item" readonly />
+        <input type="text" formControlName="item_name" readonly />
       </div>
 
       <!-- date -->

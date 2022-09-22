@@ -117,11 +117,8 @@ tbody tr td {
   padding: 0.5rem;
   border: 2px solid rgb(110, 110, 110);
 }
-tbody tr td:first-child {
+tbody tr {
   cursor: pointer;
-}
-tbody tr td:first-child:hover {
-  background-color: #888787;
 }
 tbody tr .action {
   height: 100%;

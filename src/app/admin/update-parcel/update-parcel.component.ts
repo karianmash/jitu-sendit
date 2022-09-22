@@ -8,6 +8,7 @@ import { User } from 'src/app/interface/user';
 import { ParcelState } from 'src/app/ngrx-store/models/parcel.model';
 import { getSingleParcel } from 'src/app/ngrx-store/selectors/parcel.selectors';
 import * as Actions from '../../ngrx-store/actions/parcel.actions';
+import { ParcelsService } from '../services/parcels.service';
 
 @Component({
   selector: 'app-update-parcel',
@@ -25,8 +26,59 @@ export class UpdateParcelComponent implements OnInit {
 
   users: User[];
 
+  counties: string[] = [
+    'baringo',
+    'bomet',
+    'bungoma',
+    'busia',
+    'elgeyo marakwet',
+    'embu',
+    'garissa',
+    'homa bay',
+    'isiolo',
+    'kajiado',
+    'kakamega',
+    'kericho',
+    'kiambu',
+    'kilifi',
+    'kirinyaga',
+    'kisii',
+    'kisumu',
+    'kitui',
+    'kwale',
+    'laikipia',
+    'lamu',
+    'machakos',
+    'makueni',
+    'mandera',
+    'meru',
+    'migori',
+    'marsabit',
+    'mombasa',
+    'muranga',
+    'nairobi',
+    'nakuru',
+    'nandi',
+    'narok',
+    'nyamira',
+    'nyandarua',
+    'nyeri',
+    'samburu',
+    'siaya',
+    'taita taveta',
+    'tana river',
+    'tharaka nithi',
+    'trans nzoia',
+    'turkana',
+    'uasin gishu',
+    'vihiga',
+    'wajir',
+    'pokot',
+  ];
+
   constructor(
     private _activatedroute: ActivatedRoute,
+    private parcelsService: ParcelsService,
     private store: Store<ParcelState>,
     private authService: AuthService,
     private router: Router
@@ -48,7 +100,10 @@ export class UpdateParcelComponent implements OnInit {
     });
 
     this.reactiveParcelForm = new FormGroup({
-      item: new FormControl(`${this.parcels.item_name}`, Validators.required),
+      item_name: new FormControl(
+        `${this.parcels.item_name}`,
+        Validators.required
+      ),
       weight: new FormControl(`${this.parcels.weight}`, [Validators.required]),
       sender: new FormControl(`${this.parcels.sender}`, Validators.required),
       receiver: new FormControl(
@@ -72,8 +127,10 @@ export class UpdateParcelComponent implements OnInit {
   // Handle form submission
   onSubmit(): void {
     let parcel = {
-      item_name: this.reactiveParcelForm.value.item,
-      weight: this.reactiveParcelForm.value.weight,
+      parcel_id: this.parcels.parcel_id,
+      track_id: this.parcels.track_id,
+      item_name: this.reactiveParcelForm.value.item_name,
+      weight: this.reactiveParcelForm.value.weight.toString(),
       sender: this.reactiveParcelForm.value.sender,
       receiver: this.reactiveParcelForm.value.receiver,
       status: this.reactiveParcelForm.value.status,
@@ -81,7 +138,7 @@ export class UpdateParcelComponent implements OnInit {
       price: this.reactiveParcelForm.value.price,
       origin_location: this.reactiveParcelForm.value.origin_location,
       pick_up_location: this.reactiveParcelForm.value.pick_up_location,
-      // user_id: this.parcels.user_id,
+      user_id: this.parcels.user_id,
     };
 
     for (let inputValue in parcel) {
@@ -101,14 +158,10 @@ export class UpdateParcelComponent implements OnInit {
         return alert('Price cannot be of type text!');
       }
 
-      this.updateParcel(this.parcel);
+      // Update parcel
+      this.parcelsService.updateParcel(this.parcel).subscribe((data) => {
+        this.router.navigate(['/admin/parcels']);
+      });
     }
-  }
-
-  // Register parcel
-  updateParcel(parcel: Parcel) {
-    // this.parcelsService.updateParcel(parcel);
-    this.store.dispatch(Actions.UpdateParcel({ updatedParcel: parcel }));
-    this.router.navigate(['/admin/parcels']);
   }
 }

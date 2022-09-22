@@ -12,7 +12,7 @@
       <!-- item -->
       <div>
         <label>Item</label>
-        <input type="text" formControlName="item" />
+        <input type="text" formControlName="item_name" />
         <span *ngIf="parcel?.item_name === 'invalid'"
           >* Item name is required</span
         >
@@ -27,9 +27,6 @@
 
       <!-- sender -->
       <div>
-        <!-- <label>Sender Email</label>
-        <input type="email" formControlName="sender" /> -->
-
         <label>Sender</label>
         <select formControlName="sender" id="status">
           <option *ngFor="let user of users" [value]="user.email">
@@ -91,9 +88,9 @@
       <div>
         <label>Origin location</label>
         <select formControlName="origin_location">
-          <option value="Nairobi">Nairobi</option>
-          <option value="kirinyaga">Kirinyaga</option>
-          <option value="Nyeri">Nyeri</option>
+          <option *ngFor="let county of counties" value="{{ county }}">
+            {{ county }}
+          </option>
         </select>
       </div>
 
@@ -101,9 +98,9 @@
       <div>
         <label>Pickup location</label>
         <select formControlName="pick_up_location">
-          <option value="Nairobi">Nairobi</option>
-          <option value="kirinyaga">Kirinyaga</option>
-          <option value="Nyeri">Nyeri</option>
+          <option *ngFor="let county of counties" value="{{ county }}">
+            {{ county }}
+          </option>
         </select>
       </div>
     </div>
