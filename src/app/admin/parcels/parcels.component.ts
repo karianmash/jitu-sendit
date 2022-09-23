@@ -49,6 +49,8 @@ export class ParcelsComponent implements OnInit {
   parcels: Parcel[];
   searchItem: string = '';
 
+  p: number = 1;
+
   // Form object
   reactiveFilterForm: FormGroup;
 

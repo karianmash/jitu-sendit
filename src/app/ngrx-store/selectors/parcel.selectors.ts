@@ -106,5 +106,5 @@ export const sentParcels = createSelector(
 export const receivedParcels = createSelector(
   getParcelFeatureState,
   getSenderEmail,
-  (state, email) => state.parcels.filter((parcel) => parcel.sender !== email)
+  (state, email) => state.parcels.filter((parcel) => parcel.receiver === email)
 );

@@ -29,6 +29,8 @@ export class SentComponent implements OnInit {
   parcels: Parcel[] = [];
   searchItem: string = '';
 
+  p: number = 1;
+
   // Form object
   reactiveFilterForm: FormGroup;
 

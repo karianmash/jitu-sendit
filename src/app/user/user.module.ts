@@ -11,6 +11,8 @@ import { SentComponent } from './sent/sent.component';
 import { ReceivedComponent } from './received/received.component';
 import { ParcelDetailsComponent } from './parcel-details/parcel-details.component';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 const userRoutes: Routes = [
   {
     path: '',
@@ -50,6 +52,7 @@ const userRoutes: Routes = [
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     RouterModule.forChild(userRoutes),
   ],
   exports: [RouterModule],

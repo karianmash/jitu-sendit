@@ -26,7 +26,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let parcel of parcels" (click)="showDetails(parcel.track_id)">
+      <tr
+        *ngFor="
+          let parcel of parcels | paginate: { itemsPerPage: 4, currentPage: p }
+        "
+        (click)="showDetails(parcel.track_id)"
+      >
         <td>
           <fa-icon [icon]="falink"></fa-icon>
           {{ parcel.track_id }}
@@ -41,6 +46,11 @@
       </tr>
     </tbody>
   </table>
+  <!-- pagination -->
+  <pagination-controls
+    (pageChange)="p = $event"
+    ngClass="pagination"
+  ></pagination-controls>
 </div>
 
 <ng-template #fallback>

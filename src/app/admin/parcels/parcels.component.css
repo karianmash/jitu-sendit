@@ -136,3 +136,12 @@ tbody tr .action fa-icon {
 tbody tr .action fa-icon:hover {
   opacity: 0.7;
 }
+
+/* pagination */
+.pagination {
+  height: auto;
+  color: #ffffff;
+  width: 40%;
+  margin: 2rem auto 0;
+  display: flex;
+}

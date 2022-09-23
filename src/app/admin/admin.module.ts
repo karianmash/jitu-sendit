@@ -17,6 +17,8 @@ import { ParcelDetailsComponent } from './parcel-details/parcel-details.componen
 import { CustomersService } from './services/customers.service';
 import { UpdateParcelComponent } from './update-parcel/update-parcel.component';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 const adminRoutes: Routes = [
   {
     path: '',
@@ -67,6 +69,7 @@ const adminRoutes: Routes = [
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     RouterModule.forChild(adminRoutes),
   ],
   exports: [RouterModule],

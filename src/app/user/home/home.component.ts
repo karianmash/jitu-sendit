@@ -30,11 +30,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     let user_id = JSON.parse(localStorage.getItem('userInfo')).user.user_id;
+    let email = JSON.parse(localStorage.getItem('userInfo')).user.email;
 
     this.loadParcels();
 
     this.store.select(getParcel).subscribe((parcels) => {
-      this.userParcels = parcels.filter((parcel) => parcel.user_id === user_id);
+      this.userParcels = parcels.filter(
+        (parcel) => parcel.user_id === user_id || parcel.sender === email
+      );
 
       this.reactiveUserForm = new FormGroup({
         item_name: new FormControl(`${this.userParcels[0].item_name}`),
