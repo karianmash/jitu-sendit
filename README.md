@@ -22,4 +22,4 @@ A courier service web application that allows users to send and track their parc
 
 ## Disclaimer
 
-The site is currently under development and therefore some features are likely to change anytime!
+The site is currently under development and therefore some features are likely to change in the future!
