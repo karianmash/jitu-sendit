@@ -5,8 +5,17 @@ import {
   faLineChart,
   faTruck,
 } from '@fortawesome/free-solid-svg-icons';
+
+import * as Actions from '../../ngrx-store/actions/parcel.actions';
+import { Store } from '@ngrx/store';
+import { ParcelState } from 'src/app/ngrx-store/models/parcel.model';
+import {
+  numberOfDeliveries,
+  numberOfParcels,
+  totalParcelsPrice,
+} from 'src/app/ngrx-store/selectors/parcel.selectors';
+
 import { CustomersService } from '../services/customers.service';
-import { ParcelsService } from '../services/parcels.service';
 
 @Component({
   selector: 'app-home',
@@ -14,34 +23,34 @@ import { ParcelsService } from '../services/parcels.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  // icons
   fatrack = faTruck;
   fachart = faLineChart;
   facurrency = faDollar;
   facustomers = faCartShopping;
 
-  sales: number;
   customers: number;
-  orders: number;
-  deliveries: number = 0;
+
+  // get total sales
+  sales$ = this.store.select(totalParcelsPrice);
+  // number of orders
+  orders$ = this.store.select(numberOfParcels);
+  // number of deliveries
+  deliveries$ = this.store.select(numberOfDeliveries);
 
   constructor(
-    private parcelsService: ParcelsService,
-    private customersService: CustomersService
+    private customersService: CustomersService,
+    private store: Store<ParcelState>
   ) {}
 
   ngOnInit(): void {
-    // get sales
-    this.sales = this.parcelsService.getTotalParcelPrice();
     // number of customers
     this.customers = this.customersService.getCustomers.length;
-    // number of orders
-    this.orders = this.parcelsService.getParcels.length;
+    // get parcels
+    this.loadParcels();
+  }
 
-    // number of deliveries
-    this.parcelsService.getParcels.forEach((parcel) => {
-      if (parcel.status === 'Completed') {
-        this.deliveries += 1;
-      }
-    });
+  loadParcels() {
+    this.store.dispatch(Actions.LoadParcels());
   }
 }

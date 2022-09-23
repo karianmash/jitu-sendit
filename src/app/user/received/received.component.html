@@ -19,26 +19,38 @@
         <th>Shipper</th>
         <th>Item</th>
         <th>Status</th>
-        <th>Created at</th>
-        <th>Location</th>
+        <th>Weight</th>
+        <th>Origin</th>
+        <th>Destination</th>
         <th>Price ($)</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let parcel of parcels">
-        <td (click)="showDetails(parcel.trackId)">
+      <tr
+        *ngFor="
+          let parcel of parcels | paginate: { itemsPerPage: 4, currentPage: p }
+        "
+        (click)="showDetails(parcel.track_id)"
+      >
+        <td>
           <fa-icon [icon]="falink"></fa-icon>
-          {{ parcel.trackId }}
+          {{ parcel.track_id }}
         </td>
         <td>{{ parcel.shipper }}</td>
-        <td>{{ parcel.item }}</td>
+        <td>{{ parcel.item_name }}</td>
         <td>{{ parcel.status }}</td>
-        <td>{{ parcel.createdAt }}</td>
-        <td>{{ parcel.location }}</td>
+        <td>{{ parcel.weight }}</td>
+        <td>{{ parcel.origin_location }}</td>
+        <td>{{ parcel.pick_up_location }}</td>
         <td>{{ parcel.price }}</td>
       </tr>
     </tbody>
   </table>
+  <!-- pagination -->
+  <pagination-controls
+    (pageChange)="p = $event"
+    ngClass="pagination"
+  ></pagination-controls>
 </div>
 
 <ng-template #fallback>

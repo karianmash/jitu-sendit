@@ -2,29 +2,29 @@
   <!-- info-bar -->
   <div class="info-bar">Parcel: {{ parcelId }}</div>
   <!-- Add parcel -->
-  <form
-    class="parcel-form"
-    [formGroup]="reactiveParcelForm"
-    (ngSubmit)="onSubmit()"
-  >
+  <form class="parcel-form" [formGroup]="reactiveParcelForm">
     <!-- first row -->
     <div class="row1">
       <!-- item -->
       <div>
         <label>Item</label>
-        <input type="text" formControlName="item" />
+        <input type="text" formControlName="item" readonly />
+        <span *ngIf="parcel?.item_name === 'invalid'"
+          >* Item name is required</span
+        >
       </div>
 
       <!-- date -->
       <div>
-        <label>Date from</label>
-        <input type="date" formControlName="date" />
+        <label>Weight</label>
+        <input type="number" formControlName="weight" readonly />
+        <span *ngIf="parcel?.weight === 'invalid'">* Weight is required</span>
       </div>
 
       <!-- sender -->
       <div>
-        <label>Sender Email</label>
-        <input type="email" formControlName="sender" />
+        <label>Sender</label>
+        <input type="text" formControlName="sender" readonly />
       </div>
     </div>
 
@@ -32,28 +32,20 @@
     <div class="row2">
       <!-- receiver -->
       <div>
-        <label>Receiver Email</label>
-        <input type="email" formControlName="receiver" />
+        <label>Receiver</label>
+        <input type="text" formControlName="receiver" readonly />
       </div>
 
       <!-- status -->
       <div>
         <label>Status</label>
-        <select formControlName="status" id="status">
-          <option value="In Progress">In Progress</option>
-          <option value="Completed">Completed</option>
-          <option value="Canceled">Canceled</option>
-        </select>
+        <input type="text" formControlName="status" readonly />
       </div>
 
       <!-- shipper -->
       <div>
         <label>Shipper</label>
-        <select formControlName="shipper" id="shipper">
-          <option value="Mash Movers">Mash Movers</option>
-          <option value="Amazon Air">Amazon Air</option>
-          <option value="UPS Courier">UPS Courier</option>
-        </select>
+        <input type="text" formControlName="shipper" readonly />
       </div>
     </div>
 
@@ -62,17 +54,19 @@
       <!-- price -->
       <div>
         <label>Price</label>
-        <input type="text" formControlName="price" />
+        <input type="text" formControlName="price" readonly />
       </div>
 
       <!-- location -->
       <div>
-        <label>Location</label>
-        <select formControlName="location" id="location">
-          <option value="Nairobi">Nairobi</option>
-          <option value="kirinyaga">Kirinyaga</option>
-          <option value="Nyeri">Nyeri</option>
-        </select>
+        <label>Origin location</label>
+        <input type="text" formControlName="origin_location" readonly />
+      </div>
+
+      <!-- location -->
+      <div>
+        <label>Pickup location</label>
+        <input type="text" formControlName="pick_up_location" readonly />
       </div>
     </div>
 
@@ -90,10 +84,6 @@
           marginheight="0"
           marginwidth="0"
         ></iframe>
-      </div>
-      <!-- submit -->
-      <div>
-        <input type="submit" value="Submit" />
       </div>
     </div>
   </form>

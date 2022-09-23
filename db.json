@@ -1,0 +1,64 @@
+{
+  "parcels": [
+    {
+      "id": "1",
+      "trackId": "562457806",
+      "shipper": "Amazon Air",
+      "status": "In Progress",
+      "createdAt": "2019-08-04",
+      "sender": "ianmachariak17@gmail.com",
+      "receiver": "christine@gmail.com",
+      "item": "Nike shoes",
+      "location": "Nyeri",
+      "price": "5010"
+    },
+    {
+      "id": "2",
+      "trackId": "562457896",
+      "shipper": "UPS Courier",
+      "status": "Canceled",
+      "createdAt": "2019-08-04",
+      "sender": "ianmachariak17@gmail.com",
+      "receiver": "ann@gmail.com",
+      "item": "Nike shoes",
+      "location": "Nyeri",
+      "price": "5010"
+    },
+    {
+      "id": "3",
+      "trackId": "923659456",
+      "shipper": "Mash Movers",
+      "status": "Completed",
+      "createdAt": "2019-08-04",
+      "sender": "christine@gmail.com",
+      "receiver": "ianmachariak17@gmail.com",
+      "item": "Dresses",
+      "location": "Nyeri",
+      "price": "5010"
+    },
+    {
+      "trackId": "847258553",
+      "item": "ewfd",
+      "createdAt": "2022-09-15",
+      "sender": "christine@gmail.com",
+      "receiver": "ephraim@gmail.com",
+      "status": "In Progress",
+      "shipper": "Mash Movers",
+      "price": "845",
+      "location": "Nairobi",
+      "id": "zTnhIpM"
+    },
+    {
+      "trackId": "6519456749",
+      "item": "segvrd",
+      "createdAt": "2022-09-15",
+      "sender": "ephraim@gmail.com",
+      "receiver": "victor@gmail.com",
+      "status": "In Progress",
+      "shipper": "Mash Movers",
+      "price": "8635",
+      "location": "kirinyaga",
+      "id": "sGwgsej"
+    }
+  ]
+}

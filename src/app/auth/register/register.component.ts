@@ -63,7 +63,9 @@ export class RegisterComponent implements OnInit {
       } else {
         let { confirmPassword, ...rest } = this.user;
 
-        this.authService.createUser(rest);
+        this.authService.createUser(rest).subscribe((data) => {
+          console.log(data);
+        });
 
         this.router.navigate(['/auth/login']);
       }

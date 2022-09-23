@@ -1,12 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'formatCurrency'
+  name: 'formatCurrency',
 })
 export class FormatCurrencyPipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(price: string) {
+    return price.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
-
 }

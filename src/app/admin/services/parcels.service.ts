@@ -1,127 +1,92 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { refCount } from 'rxjs';
+import { Observable, refCount } from 'rxjs';
+import { baseUrl } from 'src/app/common/api';
 import { Parcel } from 'src/app/interface/parcel';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ParcelsService {
-  constructor() {}
-
-  private parcels: Parcel[] = [
-    {
-      trackId: '562457806',
-      shipper: 'Amazon Air',
-      status: 'In Progress',
-      createdAt: '2019-08-04',
-      sender: 'ianmachariak17@gmail.com',
-      receiver: 'christine@gmail.com',
-      item: 'Nike shoes',
-      location: 'Nyeri',
-      price: '5010',
-    },
-    {
-      trackId: '562457896',
-      shipper: 'UPS Courier',
-      status: 'Canceled',
-      createdAt: '2019-08-04',
-      sender: 'ianmachariak17@gmail.com',
-      receiver: 'ann@gmail.com',
-      item: 'Nike shoes',
-      location: 'Nyeri',
-      price: '5010',
-    },
-    {
-      trackId: '923659456',
-      shipper: 'Mash Movers',
-      status: 'Completed',
-      createdAt: '2019-08-04',
-      sender: 'christine@gmail.com',
-      receiver: 'ianmachariak17@gmail.com',
-      item: 'Dresses',
-      location: 'Nyeri',
-      price: '5010',
-    },
-  ];
+  constructor(private http: HttpClient) {}
 
   // Get parcels
-  public get getParcels() {
-    return this.parcels;
-  }
+  public get getParcels(): Observable<Parcel[]> {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
-  // Get total parcels' price
-  public getTotalParcelPrice() {
-    let priceAmount = 0;
-
-    this.parcels.forEach((parcel) => {
-      priceAmount += parseInt(parcel.price);
+    return this.http.get<Parcel[]>(`${baseUrl}/parcels/get_parcels`, {
+      headers: new HttpHeaders().set(
+        'Authorization',
+        `Bearer ${userInfo.token}`
+      ),
     });
-    return priceAmount;
   }
 
-  // Get parcels sent by me
-  public getSentParcels(sender: string) {
-    return this.parcels.filter((parcel) => parcel.sender == sender);
-  }
+  // Create parcel
+  public createParcel(parcel: Parcel): Observable<{ message: string }> {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
-  // Get parcels sent to me
-  public getReceivedParcels(receiver: string) {
-    return this.parcels.filter((parcel) => parcel.receiver == receiver);
+    return this.http.post<{ message: string }>(
+      `${baseUrl}/parcels/create_parcel`,
+      parcel,
+      {
+        headers: new HttpHeaders().set(
+          'Authorization',
+          `Bearer ${userInfo.token}`
+        ),
+      }
+    );
   }
 
   // Get parcel's details
-  public getSingleParcel(trackId: string) {
-    return this.parcels.filter((parcel) => parcel.trackId == trackId);
-  }
-
-  // Get parcels for a specific user
-  public getSingleParcelUsingEmail(email: string) {
-    return this.parcels.filter((parcel) => parcel.sender == email);
-  }
-
-  // Register parcel
-  public registerParcel(parcel: Parcel): void {
-    this.parcels.push(parcel);
+  public getSingleParcel(trackId: string): Observable<Parcel> {
+    return this.http.get<Parcel>(`${baseUrl}/parcels/${trackId}`);
   }
 
   // Update parcel
   public updateParcel(updatedParcel: Parcel) {
-    this.parcels = this.parcels.map((parcel) => {
-      if (parcel.trackId === updatedParcel.trackId) {
-        parcel.item = updatedParcel.item;
-        parcel.createdAt = updatedParcel.createdAt;
-        parcel.sender = updatedParcel.sender;
-        parcel.receiver = updatedParcel.receiver;
-        parcel.status = updatedParcel.status;
-        parcel.shipper = updatedParcel.shipper;
-        parcel.price = updatedParcel.price;
-        parcel.location = updatedParcel.location;
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+
+    return this.http.patch<{ message: string }>(
+      `${baseUrl}/parcels/update_parcel`,
+      updatedParcel,
+      {
+        headers: new HttpHeaders().set(
+          'Authorization',
+          `Bearer ${userInfo.token}`
+        ),
       }
-      return parcel;
-    });
+    );
   }
 
-  // search parcel
-  public searchParcel(searchItem: string): Parcel[] {
-    return this.parcels.filter((parcel) => parcel.trackId == searchItem);
-  }
+  // Get parcels sent to me
+  // public getReceivedParcels(receiver: string) {
+  // return this.parcels.filter((parcel) => parcel.receiver == receiver);
+  //   return this.http.get<Parcel[]>(`${this.baseUrl}/parcels`);
+  // }
 
-  // filter parcel
-  public filterParcels(parcelStatus: string): Parcel[] {
-    if (parcelStatus === 'All') {
-      return this.parcels;
-    } else {
-      return this.parcels.filter((parcel) => parcel.status == parcelStatus);
-    }
-  }
+  // Get parcels sent by me
+  // public getSentParcels(sender: string) {
+  // return this.parcels.filter((parcel) => parcel.sender == sender);
+  // }
+
+  // Get parcels for a specific user
+  // public getSingleParcelUsingEmail(email: string) {
+  // return this.parcels.filter((parcel) => parcel.sender == email);
+  // }
 
   // delete parcel
-  public deleteParcel(parcelId: string) {
-    // find parcel's index
-    let parcelIndex = this.parcels.findIndex(
-      (parcel) => parcel.trackId == parcelId
-    );
+  public deleteParcel(parcel_id: string) {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
-    return this.parcels.splice(parcelIndex, 1);
+    return this.http.delete<{ message: string }>(
+      `${baseUrl}/parcels/delete_parcel/${parcel_id}`,
+      {
+        headers: new HttpHeaders().set(
+          'Authorization',
+          `Bearer ${userInfo.token}`
+        ),
+      }
+    );
   }
 }

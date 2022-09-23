@@ -15,6 +15,9 @@ import { CanDeactivateGuard } from '../auth/service/can-deactivate.guard';
 import { ParcelsService } from './services/parcels.service';
 import { ParcelDetailsComponent } from './parcel-details/parcel-details.component';
 import { CustomersService } from './services/customers.service';
+import { UpdateParcelComponent } from './update-parcel/update-parcel.component';
+
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const adminRoutes: Routes = [
   {
@@ -39,6 +42,10 @@ const adminRoutes: Routes = [
         component: CustomersComponent,
       },
       {
+        path: 'update-parcel/:parcelId',
+        component: UpdateParcelComponent,
+      },
+      {
         path: 'parcel-details/:parcelId',
         component: ParcelDetailsComponent,
       },
@@ -54,6 +61,7 @@ const adminRoutes: Routes = [
     CreateParcelComponent,
     CustomersComponent,
     ParcelDetailsComponent,
+    UpdateParcelComponent,
   ],
   providers: [CanDeactivateGuard, ParcelsService, CustomersService],
   imports: [
@@ -61,6 +69,7 @@ const adminRoutes: Routes = [
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     RouterModule.forChild(adminRoutes),
   ],
   exports: [RouterModule],

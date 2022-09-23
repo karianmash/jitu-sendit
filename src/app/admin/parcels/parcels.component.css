@@ -115,6 +115,7 @@ tbody tr td {
   text-align: start;
   color: #ffffff;
   padding: 0.5rem;
+  cursor: pointer;
   border: 2px solid rgb(110, 110, 110);
 }
 tbody tr td:first-child {
@@ -134,4 +135,13 @@ tbody tr .action fa-icon {
 }
 tbody tr .action fa-icon:hover {
   opacity: 0.7;
+}
+
+/* pagination */
+.pagination {
+  height: auto;
+  color: #ffffff;
+  width: 40%;
+  margin: 2rem auto 0;
+  display: flex;
 }

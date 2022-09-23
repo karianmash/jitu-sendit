@@ -1,20 +1,17 @@
-<div class="parcel-container" *ngIf="parcel.length > 0; else fallback">
-  <!-- info-bar -->
-  <!-- <div class="info-bar">Parcel: {{ parcelId }}</div> -->
-  <!-- Add parcel -->
+<div class="parcel-container" *ngIf="userParcels?.length > 0; else fallback">
   <form class="parcel-form" [formGroup]="reactiveUserForm">
     <!-- first row -->
     <div class="row1">
       <!-- item -->
       <div>
         <label>Item</label>
-        <input type="text" formControlName="item" readonly />
+        <input type="text" formControlName="item_name" readonly />
       </div>
 
       <!-- date -->
       <div>
-        <label>Date from</label>
-        <input type="date" formControlName="date" readonly />
+        <label>Weight</label>
+        <input type="number" formControlName="weight" readonly />
       </div>
 
       <!-- sender -->
@@ -55,8 +52,14 @@
 
       <!-- location -->
       <div>
-        <label>Location</label>
-        <input type="text" formControlName="location" readonly />
+        <label>Origin location</label>
+        <input type="text" formControlName="origin_location" readonly />
+      </div>
+
+      <!-- location -->
+      <div>
+        <label>Pickup location</label>
+        <input type="text" formControlName="pick_up_location" readonly />
       </div>
     </div>
 

@@ -9,7 +9,7 @@
     <form (ngSubmit)="onFormSubmit()" #form="ngForm">
       <h3>Welcome</h3>
       <span
-        style="margin-top: 0.6rem; color: red"
+        style="margin-top: 0.7rem; color: red"
         *ngIf="invalidCreadentials === true"
         >Invalid Credential!!!</span
       >
@@ -45,7 +45,7 @@
       <div class="signin-signup">
         <!-- Submit -->
         <div class="signin">
-          <input type="submit" value="Sign In" />
+          <input type="submit" value="Login" />
         </div>
         <!-- Sign in -->
         <a [routerLink]="['/auth/register']">Sign Up</a>

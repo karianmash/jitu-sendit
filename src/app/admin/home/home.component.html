@@ -4,7 +4,7 @@
     <!-- card -->
     <div class="highlight-card">
       <div class="info">
-        <p>$ {{ sales }}</p>
+        <p>$ {{ sales$ | async | formatCurrency }}</p>
         <p>Sales</p>
       </div>
       <div class="icon sales">
@@ -14,7 +14,7 @@
     <!-- card -->
     <div class="highlight-card">
       <div class="info">
-        <p>{{ deliveries }}</p>
+        <p>{{ deliveries$ | async }}</p>
         <p>Delivered</p>
       </div>
       <div class="icon deliveries">
@@ -24,7 +24,7 @@
     <!-- card -->
     <div class="highlight-card">
       <div class="info">
-        <p>{{ orders }}</p>
+        <p>{{ orders$ | async }}</p>
         <p>Orders</p>
       </div>
       <div class="icon orders">
@@ -53,7 +53,7 @@
         <p>New Orders</p>
       </div>
       <div class="price">
-        <p>{{ sales }}</p>
+        <p>{{ sales$ | async | formatCurrency }}</p>
         <p>Orders Price</p>
       </div>
     </div>

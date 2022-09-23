@@ -1,11 +1,14 @@
 export interface Parcel {
-  trackId: string;
+  parcel_id?: string;
+  track_id?: string;
   shipper: string;
+  weight: string;
   status: string;
-  createdAt: string;
   sender?: string;
   receiver?: string;
-  item?: string;
-  location?: string;
+  item_name?: string;
   price: string;
+  origin_location?: string;
+  pick_up_location?: string;
+  user_id?: string;
 }
