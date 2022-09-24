@@ -16,6 +16,7 @@ import {
 } from 'src/app/ngrx-store/selectors/parcel.selectors';
 
 import { CustomersService } from '../services/customers.service';
+import { AuthService } from 'src/app/auth/service/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -40,6 +41,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private customersService: CustomersService,
+    private authService: AuthService,
     private store: Store<ParcelState>
   ) {}
 
@@ -48,6 +50,10 @@ export class HomeComponent implements OnInit {
     this.customers = this.customersService.getCustomers.length;
     // get parcels
     this.loadParcels();
+
+    this.authService.getUsers().subscribe((users) => {
+      this.customers = users.length;
+    });
   }
 
   loadParcels() {

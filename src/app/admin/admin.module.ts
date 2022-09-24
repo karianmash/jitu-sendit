@@ -22,6 +22,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 const adminRoutes: Routes = [
   {
     path: '',
+    canActivate: [AuthGuard],
     component: DashboardComponent,
     canActivateChild: [AuthGuard],
     children: [
