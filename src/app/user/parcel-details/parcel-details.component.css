@@ -55,6 +55,18 @@
   color: #dbd5d5;
   background-color: #1d1d1d;
 }
+/* .row1 div input,
+.row1 div select,
+.row2 div input,
+.row2 div select {
+  height: 2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+  color: #dbd5d5;
+  background-color: #1d1d1d;
+} */
 span {
   color: red;
   margin-top: 0.5rem;
@@ -64,6 +76,11 @@ span {
 .row2 div input:focus {
   outline: none;
 }
+/* .row1 div input:focus,
+.row2 div input:focus,
+.row2 div select:focus {
+  outline: none;
+} */
 /* Third row */
 .row4 {
   display: flex;
