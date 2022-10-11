@@ -11,7 +11,7 @@
   height: 5rem;
 }
 .highlights .highlight-card {
-  background-color: #211f27;
+  background-color: rgb(30, 30, 30);
   height: 100%;
   width: 22%;
   border-radius: 6px;
@@ -63,7 +63,7 @@
 .more-info .common {
   border-radius: 10px;
   padding: 1rem;
-  background-color: #211f27;
+  background-color: rgb(30, 30, 30);
 }
 .more-info .common h3 {
   font-size: 1.3rem;
