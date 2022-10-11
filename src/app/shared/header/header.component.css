@@ -4,13 +4,14 @@
   width: 100%;
 }
 header {
-  background-color: #000000;
+  background-color: rgb(30, 30, 30);
   height: 10vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 3rem;
+  box-shadow: 0 5px 8px;
 }
 .logo {
   height: 100%;
