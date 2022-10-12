@@ -9,16 +9,12 @@
       <div>
         <label>Item</label>
         <input type="text" formControlName="item" readonly />
-        <span *ngIf="parcel?.item_name === 'invalid'"
-          >* Item name is required</span
-        >
       </div>
 
       <!-- date -->
       <div>
         <label>Weight</label>
         <input type="number" formControlName="weight" readonly />
-        <span *ngIf="parcel?.weight === 'invalid'">* Weight is required</span>
       </div>
 
       <!-- sender -->

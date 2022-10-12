@@ -8,7 +8,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 5rem;
+  height: 8rem;
 }
 .highlights .highlight-card {
   background-color: rgb(30, 30, 30);
@@ -16,6 +16,11 @@
   width: 22%;
   border-radius: 6px;
   display: flex;
+}
+.highlights .highlight-card > span {
+  border-radius: 6px 0 0 6px;
+  height: 100%;
+  width: 0.3rem;
 }
 .highlight-card .info {
   height: 100%;

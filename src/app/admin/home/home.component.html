@@ -3,6 +3,7 @@
   <div class="highlights">
     <!-- card -->
     <div class="highlight-card">
+      <span style="background-color: rgb(14, 98, 161)"></span>
       <div class="info">
         <p>$ {{ sales$ | async | formatCurrency }}</p>
         <p>Sales</p>
@@ -11,8 +12,10 @@
         <fa-icon [icon]="fatrack"></fa-icon>
       </div>
     </div>
+
     <!-- card -->
     <div class="highlight-card">
+      <span style="background-color: rgb(181, 105, 35)"></span>
       <div class="info">
         <p>{{ deliveries$ | async }}</p>
         <p>Delivered</p>
@@ -21,8 +24,10 @@
         <fa-icon [icon]="fachart"></fa-icon>
       </div>
     </div>
+
     <!-- card -->
     <div class="highlight-card">
+      <span style="background-color: rgb(183, 51, 24)"></span>
       <div class="info">
         <p>{{ orders$ | async }}</p>
         <p>Orders</p>
@@ -31,8 +36,10 @@
         <fa-icon [icon]="facurrency"></fa-icon>
       </div>
     </div>
+
     <!-- card -->
     <div class="highlight-card">
+      <span style="background-color: rgb(90, 171, 1)"></span>
       <div class="info">
         <p>{{ customers }}</p>
         <p>Customers</p>

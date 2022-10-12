@@ -156,7 +156,7 @@ tbody tr .action fa-icon:hover {
 .parcel-container .info-bar {
   width: 100%;
   padding: 0.6rem;
-  background-color: #211f27;
+  background-color: rgb(30, 30, 30);
   font-size: 1.2rem;
   font-weight: 700;
   color: #ffffff;
@@ -181,7 +181,7 @@ tbody tr .action fa-icon:hover {
 }
 .row1 div,
 .row2 div {
-  background-color: #211f27;
+  background-color: rgb(30, 30, 30);
   border-radius: 6px;
   padding: 0.7rem;
   width: 30%;
